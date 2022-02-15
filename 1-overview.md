@@ -5,22 +5,13 @@ Your username: `your username here`
 
 Student ID: 2043958
 
-# Rough Plan 
-Create an events app because trying to arrange events in whatsapp group chats is rather ineffective. 
-Key features 
-1. Create events that can be shared in some sort of conveninet manner 
-2. Users sign up for events might be beyond project scope - just enter name dont need an account 
-3. Users can accept and decline events
+200 words
+ 
+The purpose of this application is to make events planning easier when using social-media platforms like whatsapp. Many social media platforms do not have dedicated tools to plan events often making it frustrating to organise groups as event planning is often lost within general chatter and important event details are often lost within long blocks of text or not included at all. The target market is small groups of friends planning small-scale events e.g. pub and cinema trips. 
 
-- Is database in project scope? 
-- Is accounting for other users in scope? (They wouldnt need accounts just a means of accepting events) 
-- Linking to app through external link? 
+To resolve this problem I propose to create a system that at the very least allows Event Organisers to create shareable event cards (images) which will better communicate all event information in one place and in a clearer manner than a long paragraph of text would. Ideally Event Organisers would be able share links to events where users can see event details and confirm their attendance status. The event attendees would not need to create an account but would be able to confirm their attendence status from a list of attendees created by the event organiser. From this screen attendees will also be able to see who else is going to the event. If time it would be ideal to have a means of allowing event organisers to create events where users sign up rather than respond to an invitiation. 
 
-## Features 
-- Event Card creation 
-- Share events to friends via whatsapp 
-- Friends can sign up for events 
-- Friends can accept and decline events  
-- Use from g-board keyboard? 
 
-_Complete the information above and then write your 200 word overview below.__
+
+
+
