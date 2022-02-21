@@ -18,6 +18,8 @@ _Complete the information above and then enumerate your functional and non funct
 6. Event Attendees could be able to sign up for events through links provided by Event Organisers 
 7. Event Organisers should be able to create an account 
 8. Events should be able to support atleast 10 attendees
+9. Event Organisers could recieve notifications when they have an event upcoming 
+10. Event Organisers could be able to use QR codes to share events
 
 # Non-functional requirements 
 
