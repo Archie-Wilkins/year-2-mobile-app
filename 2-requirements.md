@@ -11,14 +11,14 @@ _Complete the information above and then enumerate your functional and non funct
 
 ### Must have
 
-1. Event Organisers must be able to create event cards (images with all event detials e.g. location, date, time and description) which can be used to effectively share event information 
+1. Event Organisers must be able to create event cards (images with all event detials i.e. location, date, time and description) which can be used to effectively share event information 
 
 ### Should have
 
 2. Event Organisers should be able to easily share created event cards from within the app
 3. Event Organisers should be able to create attendees lists for each event 
-4. Event Organisers could be able to share links to allow users to accept or decline events
-5. Event Attendees could be able to click shared event links to accept or decline an event within a web-page or within the app (No account needed)
+4. Event Organisers should be able to share links to allow users to accept or decline events
+5. Event Attendees should be able to click shared event links to accept or decline an event within a web-page or within the app (No account needed)
 6. Event Organisers should be able to create an account 
 7. Events should be able to support atleast 10 attendees
 
