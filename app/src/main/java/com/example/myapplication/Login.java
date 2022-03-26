@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,8 +36,7 @@ public class Login extends AppCompatActivity {
     private EditText usernameInput;
     private EditText passwordInput;
 
-    private SharedPreferences sharedPreferences;
-
+//    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
         this.usernameInput = findViewById(R.id.usernameInput);
         this.passwordInput = findViewById(R.id.passwordInput);
 
-        this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
+//        this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
     }
 
     public void onClick(View view) {
@@ -83,14 +83,14 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(getApplication().getBaseContext(), "Welcome " + responseName , Toast.LENGTH_SHORT).show();
 
                             //Setting shared preferences
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            String sharedPreferencesFile = getString(R.string.sharedPreferencesFile);
+                            SharedPreferences sp = getSharedPreferences(sharedPreferencesFile,Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
                             editor.putBoolean(UserDetails.KEY_USER_LOGGED_IN, true);
                             editor.putInt(UserDetails.KEY_USER_ID, responseUserId);
                             editor.putString(UserDetails.KEY_USERNAME, responseUsername);
                             editor.putString(UserDetails.KEY_USER_REAL_NAME, responseUsername);
-                            editor.commit();
-
-                            //Toast.makeText(getApplication().getBaseContext(), this.sharedPreferences.getString(UserDetails.KEY_USER_ID, UserDetails.DEFAULT_USER_ID.toString()), Toast.LENGTH_SHORT).show();
+                            editor.apply();
 
                             Intent dashboard = new Intent(getApplicationContext(), dashboard.class);
                             startActivity(dashboard);

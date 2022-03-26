@@ -112,4 +112,18 @@
 
     <!-- dashboard   -->
     <string name="newEventButton">add Event</string>
+
+    <!-- shared preferences    -->
+    <string name="sharedPreferencesFile">userDetailsSP</string>
+
+    <!-- New Event Form    -->
+    <string name="eventTitle">Event Title</string>
+    <string name="eventLocation">Location</string>
+    <string name="eventPostCode">Post Code (Optional)</string>
+    <string name="eventType">Event Type (e.g. Party, Formal Dinner)</string>
+    <string name="eventDescription">Description</string>
+    <string name="eventDate">Date</string>
+    <string name="eventStartTime">Start Time</string>
+    <string name="eventEndTime">End Time (Optional)</string>
+    <string name="eventSubmit">Create Event</string>
 </resources>

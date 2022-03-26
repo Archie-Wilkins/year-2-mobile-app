@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".dashboard">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="519dp"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="121dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <Button
         android:id="@+id/newEventButton"
         android:layout_width="137dp"
@@ -38,4 +25,14 @@
         android:text="Welcome! "
         tools:layout_editor_absoluteX="23dp"
         tools:layout_editor_absoluteY="36dp" />
+
+    <GridView
+        android:id="@+id/eventGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428"
+        tools:layout_editor_absoluteX="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
