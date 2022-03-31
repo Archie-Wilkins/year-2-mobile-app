@@ -112,6 +112,7 @@ public class newEventForm extends AppCompatActivity {
                         String responseStatus = response.getString("response");
                         if(responseStatus.equals("success")){
                             Toast.makeText(getApplication().getBaseContext(), "Event Added", Toast.LENGTH_SHORT).show();
+
                             Intent dashboard = new Intent(getApplicationContext(), dashboard.class);
                             startActivity(dashboard);
                             //Prevents user from going back
