@@ -126,6 +126,11 @@
     <string name="eventStartTime">Start Time</string>
     <string name="eventEndTime">End Time (Optional)</string>
     <string name="eventSubmit">Create Event</string>
+
+    <!-- View Event Details  -->
+    <string name="tab1">Event</string>
+    <string name="tab2">Attendees</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

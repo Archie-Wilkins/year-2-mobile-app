@@ -120,8 +120,6 @@ public class dashboard extends AppCompatActivity {
                         eventList.add(event);
 
 
-
-
                         } catch (JSONException jsonException) {
                             jsonException.printStackTrace();
                         }
@@ -169,8 +167,10 @@ public class dashboard extends AppCompatActivity {
         Intent intent = null;
         switch(id){
             case R.id.newEventButton:
-                Intent newEventForm = new Intent(getApplicationContext(), newEventForm.class);
-                startActivity(newEventForm);
+//                Intent newEventForm = new Intent(getApplicationContext(), newEventForm.class);
+//                startActivity(newEventForm);
+                Intent viewEventDetails = new Intent(getApplicationContext(), event_details.class);
+                startActivity(viewEventDetails);
 
         }
     }
