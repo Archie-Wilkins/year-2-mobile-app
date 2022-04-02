@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class event_details extends AppCompatActivity {
 
@@ -21,12 +22,17 @@ public class event_details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
 
+        int value = getIntent().getExtras().getInt("eventId");
+
+
+
         tabLayout = findViewById(R.id.eventDetailsTabLayout);
         viewPager = findViewById(R.id.eventDetailsViewPager);
-        
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter = new EventInfoAdapter(fragmentManager, getLifecycle());
         viewPager.setAdapter(adapter);
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener(){
 

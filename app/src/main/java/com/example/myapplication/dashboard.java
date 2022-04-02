@@ -38,15 +38,6 @@ public class dashboard extends AppCompatActivity {
     public static final String DATABASE_NAME = "eventsDatabase";
 
 
-
-
-//    Really good grid resourse
-//    https://mkyong.com/android/android-gridview-example/
-
-
-    String[] gridItems = {"Hello","Good Morning","Test","Please Work", "Yeah ok", "lol", "rofl"};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,10 +158,9 @@ public class dashboard extends AppCompatActivity {
         Intent intent = null;
         switch(id){
             case R.id.newEventButton:
-//                Intent newEventForm = new Intent(getApplicationContext(), newEventForm.class);
-//                startActivity(newEventForm);
-                Intent viewEventDetails = new Intent(getApplicationContext(), event_details.class);
-                startActivity(viewEventDetails);
+                Intent newEventForm = new Intent(getApplicationContext(), newEventForm.class);
+                startActivity(newEventForm);
+
 
         }
     }
@@ -185,5 +175,9 @@ public class dashboard extends AppCompatActivity {
             threadPool.shutdownNow();
             Thread.currentThread().interrupt();
         }
+    }
+
+    public void startGridEventDetailsActivity(){
+
     }
 }

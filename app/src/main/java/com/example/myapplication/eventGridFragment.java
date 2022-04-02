@@ -3,6 +3,7 @@ package com.example.myapplication;
 import static java.lang.Thread.sleep;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +48,7 @@ public class eventGridFragment extends Fragment {
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
 
-
-
-
+        ArrayList<Integer> eventIds = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> eventCardDescriptions = new ArrayList<>();
         ArrayList<String> eventDates = new ArrayList<>();
@@ -60,7 +60,10 @@ public class eventGridFragment extends Fragment {
 
         int userId = sp.getInt(UserDetails.KEY_USER_ID, UserDetails.DEFAULT_USER_ID);
 
-        adapter = new eventGridAdapter(getActivity().getApplicationContext(), titles, eventCardDescriptions,eventDates,eventStartTimes,eventEndTimes);
+        eventRecyclerView =  (RecyclerView) view.findViewById(R.id.eventRecyclerView);
+
+
+        adapter = new eventGridAdapter(getActivity().getApplicationContext(), eventRecyclerView, eventIds, titles, eventCardDescriptions,eventDates,eventStartTimes,eventEndTimes);
         adapter.notifyDataSetChanged();
 
 
@@ -70,10 +73,9 @@ public class eventGridFragment extends Fragment {
             @Override
             public void run() {
                 usersEvents = db.eventDao().getAllUserEvents(userId);
-                System.out.println(usersEvents.toString());
-
 
                 for(Event event : usersEvents){
+                    eventIds.add(event.getEventId());
                     titles.add(event.getTitle());
                     eventCardDescriptions.add(event.getDescription());
                     eventDates.add(event.getDate());
@@ -88,14 +90,14 @@ public class eventGridFragment extends Fragment {
 
 
 
-        eventRecyclerView =  (RecyclerView) view.findViewById(R.id.eventRecyclerView);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(adapter);
 
-
         return view;
     }
+
+
 
 //    https://www.baeldung.com/java-executor-wait-for-threads
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
@@ -109,4 +111,5 @@ public class eventGridFragment extends Fragment {
             Thread.currentThread().interrupt();
         }
     }
+
 }
