@@ -62,11 +62,6 @@ public class dashboard extends AppCompatActivity {
         fragmentTransaction.add(R.id.fragmentContainerView, new loadingFragment());
         fragmentTransaction.commit();
 
-
-
-
-
-
     }
 
 
