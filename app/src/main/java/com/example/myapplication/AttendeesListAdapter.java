@@ -37,16 +37,16 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
     @Override
     public AttendeesListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         System.out.println("Pause");
-        View view = inflater.inflate(R.layout.attendee_info, parent, false);
+        View view = inflater.inflate(R.layout.attendee_item, parent, false);
         view.setOnClickListener(this::onClick);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AttendeesListAdapter.ViewHolder holder, int position) {
-        holder.attendeeName.setText("Title");
-        holder.attendeeNumber.setText("Test");
-        holder.attendeeResponse.setText("Test");
+        holder.attendeeName.setText(attendeeName.get(position));
+        holder.attendeeNumber.setText(String.valueOf(position + 1));
+        holder.attendeeResponse.setText(response.get(position));
     }
 
 

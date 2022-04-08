@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -32,13 +36,20 @@ public class event_details_attendeesinfo extends Fragment {
 
 
     ExecutorService executor;
-
+    private Button addAttendeeButton;
+    private EditText attendeeNameInput;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event_details_attendeesinfo, container, false);
+
+        addAttendeeButton = view.findViewById(R.id.submitNewAttendeeButton);
+        addAttendeeButton.setOnClickListener(this::onClick);
+
+        attendeeNameInput = view.findViewById(R.id.editTextTextPersonName);
+
 
         System.out.println("Creating attendees object");
         int eventId = getActivity().getIntent().getExtras().getInt("eventId");
@@ -122,6 +133,8 @@ public class event_details_attendeesinfo extends Fragment {
                         executor.execute(new Runnable() {
                             @Override
                             public void run() {
+                                db.attendeeDAO().resetTable();
+
                                 for(Attendee attendee: attendeesList){
                                     db.attendeeDAO().insertAttendee(attendee);
                                 }
@@ -150,10 +163,6 @@ public class event_details_attendeesinfo extends Fragment {
         );
         requestQueue.add(getEventRequest);
 
-
-
-
-
     }
 
 
@@ -167,5 +176,67 @@ public class event_details_attendeesinfo extends Fragment {
             threadPool.shutdownNow();
             Thread.currentThread().interrupt();
         }
+    }
+
+    public void onClick(View view){
+        int id = view.getId();
+
+        System.out.println("On click");
+        Intent intent = null;
+        switch(id){
+            case R.id.submitNewAttendeeButton:
+                //Api call
+                System.out.println("Goooooooooo");
+                String name = attendeeNameInput.getText().toString();
+                int eventId = getActivity().getIntent().getExtras().getInt("eventId");
+                addAttendee(name, eventId);
+
+        }
+    }
+
+
+    private void addAttendee(String attendeeName, int eventId) {
+
+        HashMap<String, String> JsonMap = new HashMap<>();
+        JsonMap.put("attendeeName",attendeeName);
+        JsonMap.put("eventID",String.valueOf(eventId));
+        JsonMap.put("response","Yet to respond");
+        JSONObject jsonObject = new JSONObject(JsonMap);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        JsonObjectRequest addAttendeeRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                "https://archiewilkins.pythonanywhere.com/api/addEventAttendees" , jsonObject,
+                response -> {
+                    System.out.println(response.toString());
+                    //need to get response size so I can list through and create event objects
+                    String responseStatus = null;
+                    try {
+                        responseStatus = response.getString("response");
+                        if(responseStatus.equals("success")) {
+
+                            Toast.makeText(getActivity().getApplication().getBaseContext(), "Attendee Added", Toast.LENGTH_SHORT).show();
+
+
+                            //TO DO
+                            //add event attendee to list via adapter and notify data set changed
+
+
+                        }
+
+                    } catch (JSONException jsonException) {
+                        jsonException.printStackTrace();
+                        //give error toast
+                        Toast.makeText(getActivity().getApplication().getBaseContext(), "Whoops something went wrong", Toast.LENGTH_SHORT).show();
+
+                    }
+                },
+                error -> {
+                    System.out.println("Error");
+                        Toast.makeText(getActivity().getApplication().getBaseContext(), "Error Can't reach server", Toast.LENGTH_LONG).show();
+                }
+        );
+        requestQueue.add(addAttendeeRequest);
+
     }
 }

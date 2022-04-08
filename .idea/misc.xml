@@ -16,11 +16,13 @@
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/activity_new_event_form.xml" value="0.4" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/activity_scrolling.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/activity_view_event.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/attendee_item.xml" value="0.25" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/content_scrolling.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/event_grid_card.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_attendee_info.xml" value="0.1" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_attendees_list.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_event_details.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_event_details_attendeesinfo.xml" value="0.1" />
+        <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_event_details_attendeesinfo.xml" value="0.33" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_event_details_eventinfo.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_event_grid.xml" value="0.33" />
         <entry key="..\:/Users/c2043958/OneDrive - Cardiff University/Documents/Year 2/Mobile Dev/MobileApp/app/src/main/res/layout/fragment_loading.xml" value="0.33" />

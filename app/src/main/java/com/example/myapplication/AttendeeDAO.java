@@ -15,6 +15,9 @@ public interface AttendeeDAO {
 //    @Query("SELECT attendeeName,response FROM Attendee WHERE eventId = :eventid")
 //    List<Attendee> getAttendeeNamesAndResponse(int eventid);
 
+    @Query("DELETE FROM Attendee")
+    void resetTable();
+
     @Insert
     void insertAttendee(Attendee... attendees);
 

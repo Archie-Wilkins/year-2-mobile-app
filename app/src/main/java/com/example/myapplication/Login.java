@@ -44,6 +44,18 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        String sharedPreferencesFile = getString(R.string.sharedPreferencesFile);
+        SharedPreferences sp = getSharedPreferences(sharedPreferencesFile,Context.MODE_PRIVATE);
+
+        boolean userLoggedIn = sp.getBoolean("user_logged_in",false);
+        if ( userLoggedIn == true) {
+            Intent dashboard = new Intent(getApplicationContext(), dashboard.class);
+            startActivity(dashboard);
+            //Prevents user from going back
+            finish();
+        }
+
+
         this.submitButton = findViewById(R.id.loginSubmit);
         this.submitButton.setOnClickListener(this::onClick);
 
