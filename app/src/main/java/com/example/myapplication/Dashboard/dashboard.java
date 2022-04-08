@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Dashboard;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapplication.Room.Event;
+import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.SharedPreferences.UserDetails;
+import com.example.myapplication.Universal.loadingFragment;
 
 import org.json.JSONException;
 
@@ -153,7 +158,7 @@ public class dashboard extends AppCompatActivity {
         Intent intent = null;
         switch(id){
             case R.id.newEventButton:
-                Intent newEventForm = new Intent(getApplicationContext(), newEventForm.class);
+                Intent newEventForm = new Intent(getApplicationContext(), com.example.myapplication.NewEvent.newEventForm.class);
                 startActivity(newEventForm);
 
 

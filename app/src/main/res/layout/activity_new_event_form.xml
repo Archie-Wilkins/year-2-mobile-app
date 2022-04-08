@@ -7,7 +7,7 @@
     android:layout_marginBottom="4dp"
     android:fillViewport="true"
 
-    tools:context=".newEventForm">
+    tools:context=".NewEvent.newEventForm">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

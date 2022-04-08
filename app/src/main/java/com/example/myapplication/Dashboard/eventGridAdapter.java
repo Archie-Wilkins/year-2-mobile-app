@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Dashboard;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
+import com.example.myapplication.ViewEventInfomation.event_details;
 
 import java.util.List;
 

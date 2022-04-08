@@ -1,13 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +12,12 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapplication.Dashboard.dashboard;
+import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.UserDetails;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +26,7 @@ import android.content.SharedPreferences;
 
 
 
-public class Login extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     private Button submitButton;
     private EditText usernameInput;
@@ -49,7 +45,7 @@ public class Login extends AppCompatActivity {
 
         boolean userLoggedIn = sp.getBoolean("user_logged_in",false);
         if ( userLoggedIn == true) {
-            Intent dashboard = new Intent(getApplicationContext(), dashboard.class);
+            Intent dashboard = new Intent(getApplicationContext(), com.example.myapplication.Dashboard.dashboard.class);
             startActivity(dashboard);
             //Prevents user from going back
             finish();

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.resources.TextAppearanceConfig;
+import com.example.myapplication.Room.Event;
+import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

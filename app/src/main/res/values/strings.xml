@@ -102,7 +102,7 @@
     <string name="login_failed">"Login failed"</string>
 
 
-    <!--  Login Page  -->
+    <!--  login Page  -->
     <string name="loginTitle">Welcome!</string>
     <string name="usernamePrompt">Username (Hint use: Rob222)</string>
     <string name="username"></string>

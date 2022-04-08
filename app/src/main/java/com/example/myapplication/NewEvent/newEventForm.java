@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.NewEvent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +16,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.UserDetails;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -113,7 +115,7 @@ public class newEventForm extends AppCompatActivity {
                         if(responseStatus.equals("success")){
                             Toast.makeText(getApplication().getBaseContext(), "Event Added", Toast.LENGTH_SHORT).show();
 
-                            Intent dashboard = new Intent(getApplicationContext(), dashboard.class);
+                            Intent dashboard = new Intent(getApplicationContext(), com.example.myapplication.Dashboard.dashboard.class);
                             startActivity(dashboard);
                             //Prevents user from going back
                             finish();

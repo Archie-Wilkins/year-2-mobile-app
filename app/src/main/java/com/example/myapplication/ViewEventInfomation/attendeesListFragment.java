@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,17 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.Room.Attendee;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;

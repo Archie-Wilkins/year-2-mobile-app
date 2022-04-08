@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Universal;
 
 import java.util.Arrays;
 

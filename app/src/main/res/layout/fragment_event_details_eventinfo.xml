@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".event_details_eventinfo">
+    tools:context=".ViewEventInfomation.event_details_eventinfo">
 
     <TextView
         android:id="@+id/eventDetailsEventDate"

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
 
 import java.util.List;
 
@@ -36,7 +38,6 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
     @NonNull
     @Override
     public AttendeesListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        System.out.println("Pause");
         View view = inflater.inflate(R.layout.attendee_item, parent, false);
         view.setOnClickListener(this::onClick);
         return new ViewHolder(view);

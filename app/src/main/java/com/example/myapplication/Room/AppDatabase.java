@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Room;
 
 import android.content.Context;
 
@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Event.class,Attendee.class}, version = 1, exportSchema = false)
+@Database(entities = {Event.class, Attendee.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;

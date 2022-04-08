@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +19,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapplication.Room.Event;
+import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.Room.Attendee;
+import com.example.myapplication.Universal.loadingFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;

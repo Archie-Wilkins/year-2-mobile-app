@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboard">
+    tools:context=".Dashboard.dashboard">
 
     <Button
         android:id="@+id/newEventButton"
@@ -28,7 +28,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.myapplication.loadingFragment"
+        android:name="com.example.myapplication.Universal.loadingFragment"
         android:layout_width="389dp"
         android:layout_height="578dp"
         android:layout_marginBottom="80dp"

@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
-            android:name=".event_details"
+            android:name=".ViewEventInfomation.event_details"
             android:exported="true" />
         <activity
-            android:name=".dashboard"
+            android:name=".Dashboard.dashboard"
             android:exported="true" />
         <activity
-            android:name=".newEventForm"
+            android:name=".NewEvent.newEventForm"
             android:exported="true" />
         <activity
-            android:name=".Login"
+            android:name=".Login.login"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

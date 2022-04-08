@@ -1,15 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
+import com.example.myapplication.R;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class event_details extends AppCompatActivity {
 

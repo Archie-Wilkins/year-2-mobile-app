@@ -1,9 +1,8 @@
-package com.example.myapplication;
+package com.example.myapplication.Dashboard;
 
 import static java.lang.Thread.sleep;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -14,14 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.example.myapplication.Room.Event;
+import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.SharedPreferences.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class eventGridFragment extends Fragment {

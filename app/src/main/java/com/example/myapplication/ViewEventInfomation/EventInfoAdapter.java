@@ -1,11 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.ViewEventInfomation;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.example.myapplication.ViewEventInfomation.event_details_attendeesinfo;
+import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
 
 public class EventInfoAdapter extends FragmentStateAdapter {
 

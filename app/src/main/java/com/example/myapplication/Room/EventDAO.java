@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Room;
 
 import androidx.room.Insert;
 import androidx.room.Query;
