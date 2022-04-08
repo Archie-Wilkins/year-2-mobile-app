@@ -126,11 +126,6 @@ public class event_details_attendeesinfo extends Fragment {
                         Context context = getContext();
                         AppDatabase db = AppDatabase.getDatabase(context);
 
-
-
-
-
-
                         this.executor = Executors.newFixedThreadPool(4);
 
                         executor.execute(new Runnable() {

@@ -1,6 +1,7 @@
 package com.example.myapplication.ViewEventInfomation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Room.Event;
@@ -29,10 +31,14 @@ public class event_details_eventinfo extends Fragment {
     TextView eventDetailsEventType;
     TextView eventDetailsEventAddress;
     TextView eventDetailsEventTitle;
+    Button shareEventButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+       ;
 
         int eventId = getActivity().getIntent().getExtras().getInt("eventId");
         System.out.println(eventId + " FROM THE INTENT");
@@ -51,6 +57,9 @@ public class event_details_eventinfo extends Fragment {
         });
 
         View view = inflater.inflate(R.layout.fragment_event_details_eventinfo, container, false);
+
+        shareEventButton = view.findViewById(R.id.shareEventButton);
+        shareEventButton.setOnClickListener(this::onClick);
 
         eventDetailsEventStartTime = view.findViewById(R.id.eventDetailsEventStartTime);
         eventDetailsEventDate = view.findViewById(R.id.eventDetailsEventDate);
@@ -85,5 +94,24 @@ public class event_details_eventinfo extends Fragment {
         }
 
         return view;
+    }
+
+    public void onClick(View view){
+        int id = view.getId();
+
+        switch(id){
+            case R.id.shareEventButton:
+
+                String message = "This is the message that needs to be shared.";
+
+                //Reference code modified from https://stackoverflow.com/questions/12952865/how-to-share-text-to-whatsapp-from-my-app#:~:text=Like%20most%20social%20apps%20on,sendIntent%20%3D%20new%20Intent()%3B%20sendIntent.
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+                shareIntent.setType("text/plain");
+                startActivity(shareIntent);
+
+
+        }
     }
 }

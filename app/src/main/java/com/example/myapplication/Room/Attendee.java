@@ -14,18 +14,17 @@ public class Attendee {
     @ColumnInfo(name = "eventId")
     int eventId;
 
-    @ColumnInfo(name = "response")
-    String response;
-
     @ColumnInfo(name = "attendeeName")
     String attendeeName;
 
+    @ColumnInfo(name = "response")
+    String response;
 
-    public Attendee(int attendeeId, int eventId, String response, String attendeeName) {
+    public Attendee(int attendeeId, int eventId, String attendeeName, String response) {
         this.attendeeId = attendeeId;
         this.eventId = eventId;
-        this.response = response;
         this.attendeeName = attendeeName;
+        this.response = response;
     }
 
     public int getAttendeeId() {
