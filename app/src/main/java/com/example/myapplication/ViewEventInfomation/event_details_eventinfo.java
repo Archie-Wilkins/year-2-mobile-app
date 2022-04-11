@@ -102,7 +102,7 @@ public class event_details_eventinfo extends Fragment {
         switch(id){
             case R.id.shareEventButton:
 
-                String message = "This is the message that needs to be shared.";
+                String message = "This was sent using the share intent api thing its actually well easy to do.";
 
                 //Reference code modified from https://stackoverflow.com/questions/12952865/how-to-share-text-to-whatsapp-from-my-app#:~:text=Like%20most%20social%20apps%20on,sendIntent%20%3D%20new%20Intent()%3B%20sendIntent.
                 Intent shareIntent = new Intent();

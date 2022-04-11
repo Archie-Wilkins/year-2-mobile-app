@@ -48,7 +48,6 @@ public class attendeesListFragment extends Fragment {
 
         attendeesListView = view.findViewById(R.id.attendeesList);
         adapter = new AttendeesListAdapter(inflater, responseList, attendeeNameList, attendeesListView, getActivity().getApplicationContext());
-        adapter.notifyDataSetChanged();
 
 
         ExecutorService executor = Executors.newFixedThreadPool(4);
@@ -68,13 +67,12 @@ public class attendeesListFragment extends Fragment {
         awaitTerminationAfterShutdown(executor);
 
 
-    //Bug here - suspected incorrect context being passed through
         GridLayoutManager attendeeLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
         attendeesListView.setLayoutManager(attendeeLayoutManager);
         attendeesListView.setAdapter(adapter);
                         //if attendees present display in list view and let users add new attendees
                         //let users add new attendees
-//                        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
 
 
         return view;

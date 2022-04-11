@@ -183,10 +183,16 @@ public class event_details_attendeesinfo extends Fragment {
         Intent intent = null;
         switch(id){
             case R.id.submitNewAttendeeButton:
+                //Need to add spam protection
+
+
                 //Api call
-                System.out.println("Goooooooooo");
                 String name = attendeeNameInput.getText().toString();
                 int eventId = getActivity().getIntent().getExtras().getInt("eventId");
+
+                //Emptying event input
+                attendeeNameInput.setText("");
+
                 addAttendee(name, eventId);
 
         }
@@ -201,6 +207,9 @@ public class event_details_attendeesinfo extends Fragment {
         JsonMap.put("response","Yet to respond");
         JSONObject jsonObject = new JSONObject(JsonMap);
 
+        //AttendeeId set to 0, room will automatically set proper attendeeId - effectively just a null value
+
+
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         JsonObjectRequest addAttendeeRequest = new JsonObjectRequest(
                 Request.Method.POST,
@@ -213,14 +222,41 @@ public class event_details_attendeesinfo extends Fragment {
                         responseStatus = response.getString("response");
                         if(responseStatus.equals("success")) {
 
-                            Toast.makeText(getActivity().getApplication().getBaseContext(), "Attendee Added", Toast.LENGTH_SHORT).show();
 
 
                             //TO DO
                             //add event attendee to list via adapter and notify data set changed
 
+                            //
+
+                            Attendee attendee = new Attendee(0, eventId, attendeeName, "Yet to respond");
+
+                            Context context = getContext();
+                            AppDatabase db = AppDatabase.getDatabase(context);
+
+                            ExecutorService executor = Executors.newFixedThreadPool(4);
+                            executor.execute(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    db.attendeeDAO().insertAttendee(attendee);
+                                }
+
+                            });
 
                         }
+
+                        Toast.makeText(getActivity().getApplication().getBaseContext(), "Attendee Added", Toast.LENGTH_SHORT).show();
+
+                        awaitTerminationAfterShutdown(executor);
+                        //Rebuild fragment
+                        Bundle bundle = new Bundle();
+                        bundle.putString("eventId", String.valueOf(eventId));
+                        Fragment fragment = new attendeesListFragment();
+                        fragment.setArguments(bundle);
+
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.attendeesfragmentContainerView, fragment).commit();
+
 
                     } catch (JSONException jsonException) {
                         jsonException.printStackTrace();
