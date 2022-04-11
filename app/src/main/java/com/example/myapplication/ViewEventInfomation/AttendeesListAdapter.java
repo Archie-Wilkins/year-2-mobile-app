@@ -46,7 +46,7 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
     @Override
     public void onBindViewHolder(@NonNull AttendeesListAdapter.ViewHolder holder, int position) {
         holder.attendeeName.setText(attendeeName.get(position));
-        holder.attendeeNumber.setText(String.valueOf(position + 1));
+        holder.attendeeNumber.setText(String.valueOf(position + 1) + " - ");
         holder.attendeeResponse.setText(response.get(position));
     }
 

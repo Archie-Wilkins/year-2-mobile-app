@@ -112,6 +112,7 @@
 
     <!-- dashboard   -->
     <string name="newEventButton">add Event</string>
+    <string name="dashBoardHeader">Your Events</string>
 
     <!-- shared preferences    -->
     <string name="sharedPreferencesFile">userDetailsSP</string>
@@ -135,4 +136,15 @@
     <string name="addAttendee">Add New Attendee</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Event Grid Card    -->
+    <string name="card_date">Date: </string>
+    <string name="card_time">Time: </string>
+
+    <!-- Event Card Full Screen -->
+    <string name="eventFullScreenTime">When?</string>
+    <string name="eventFullScreenPlace">Where? </string>
+    <string name="eventFullScreenDescription">What?</string>
+
+
 </resources>

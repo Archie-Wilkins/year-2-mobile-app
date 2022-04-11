@@ -26,7 +26,6 @@ public class eventGridAdapter extends RecyclerView.Adapter<eventGridAdapter.View
     List<String> eventEndTimes;
     List<String> eventStartTimes;
     RecyclerView recyclerView;
-    Context context;
 
     public eventGridAdapter(Context context, RecyclerView recyclerView, List<Integer> eventIds, List<String> eventDates, List<String> titles, List<String> eventCardDescriptions, List<String> eventEndTimes, List<String> eventStartTimes) {
         this.inflater = LayoutInflater.from(context);
@@ -37,7 +36,6 @@ public class eventGridAdapter extends RecyclerView.Adapter<eventGridAdapter.View
         this.eventEndTimes = eventEndTimes;
         this.eventStartTimes = eventStartTimes;
         this.recyclerView = recyclerView;
-        this.context = context;
     }
 
 

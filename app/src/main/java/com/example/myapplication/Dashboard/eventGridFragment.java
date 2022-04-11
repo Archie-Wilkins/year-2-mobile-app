@@ -64,7 +64,7 @@ public class eventGridFragment extends Fragment {
         eventRecyclerView =  (RecyclerView) view.findViewById(R.id.eventRecyclerView);
 
 
-        adapter = new eventGridAdapter(getActivity().getApplicationContext(), eventRecyclerView, eventIds, titles, eventCardDescriptions,eventDates,eventStartTimes,eventEndTimes);
+        adapter = new eventGridAdapter(getActivity().getApplicationContext(), eventRecyclerView, eventIds, eventDates, titles, eventCardDescriptions ,eventEndTimes,eventStartTimes);
         adapter.notifyDataSetChanged();
 
 
