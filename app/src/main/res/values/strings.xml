@@ -150,7 +150,7 @@
     <string name="date">Date:</string>
     <string name="time">Times</string>
 
-
-
+    <!-- App Interal Link    -->
+    <string name="internalLink">www.facebookeventsknockoff.com</string>
 
 </resources>

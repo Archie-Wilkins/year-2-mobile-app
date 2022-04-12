@@ -55,7 +55,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/attendeesfragmentContainerView"
         android:layout_width="361dp"
-        android:layout_height="491dp"
+        android:layout_height="433dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.298"

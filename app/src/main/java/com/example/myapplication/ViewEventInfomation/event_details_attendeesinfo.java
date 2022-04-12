@@ -176,25 +176,22 @@ public class event_details_attendeesinfo extends Fragment {
         }
     }
 
-    public void onClick(View view){
+    public void onClick(View view) {
         int id = view.getId();
 
         System.out.println("On click");
         Intent intent = null;
-        switch(id){
+        switch (id) {
             case R.id.submitNewAttendeeButton:
-                //Need to add spam protection
-
-
-                //Api call
                 String name = attendeeNameInput.getText().toString();
-                int eventId = getActivity().getIntent().getExtras().getInt("eventId");
-
-                //Emptying event input
-                attendeeNameInput.setText("");
-
-                addAttendee(name, eventId);
-
+                if (name.equals("")) {
+                    Toast.makeText(getActivity().getApplication().getBaseContext(), "Name cannot be null", Toast.LENGTH_SHORT).show();
+                } else {
+                    int eventId = getActivity().getIntent().getExtras().getInt("eventId");
+                    //Emptying event input
+                    attendeeNameInput.setText("");
+                    addAttendee(name, eventId);
+                }
         }
     }
 

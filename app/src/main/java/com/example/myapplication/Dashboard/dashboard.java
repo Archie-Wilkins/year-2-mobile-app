@@ -42,7 +42,6 @@ public class dashboard extends AppCompatActivity {
 
     public static final String DATABASE_NAME = "eventsDatabase";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +64,36 @@ public class dashboard extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainerView, new loadingFragment());
+
         fragmentTransaction.commit();
 
     }
+
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        setContentView(R.layout.activity_dashboard);
+//
+//        newEventButton = findViewById(R.id.newEventButton);
+//        newEventButton.setOnClickListener(this::onClick);
+//
+//        String sharedPreferencesFile = getString(R.string.sharedPreferencesFile);
+//        SharedPreferences sp = getSharedPreferences(sharedPreferencesFile, Context.MODE_PRIVATE);
+//
+//        int userId = sp.getInt(UserDetails.KEY_USER_ID, UserDetails.DEFAULT_USER_ID);
+//
+//
+//        //Need to do get request for all users events
+//        getEvents(userId);
+//
+//
+//        //Adding fragment
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.fragmentContainerView, new loadingFragment());
+//        fragmentTransaction.commit();
+//
+//    }
 
 
 
@@ -130,12 +156,6 @@ public class dashboard extends AppCompatActivity {
 
 
                     Fragment fragment = new eventGridFragment();
-//                    FragmentManager fragmentManager = getSupportFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.fragmentContainerView, fragment);
-////                    fragmentTransaction.add(R.id.fragmentContainerView, fragment);
-//                    fragmentTransaction.replace(R.id.fragmentContainerView, fragment);
-//                    fragmentTransaction.commit();
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
 
@@ -149,7 +169,7 @@ public class dashboard extends AppCompatActivity {
         requestQueue.add(getEventsRequest);
 
 
-    };
+    }
 
 
     public void onClick(View view){
@@ -177,7 +197,4 @@ public class dashboard extends AppCompatActivity {
         }
     }
 
-    public void startGridEventDetailsActivity(){
-
-    }
 }
