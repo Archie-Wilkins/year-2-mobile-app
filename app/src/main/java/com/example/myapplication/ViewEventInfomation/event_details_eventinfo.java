@@ -119,7 +119,7 @@ public class event_details_eventinfo extends Fragment {
                         + "Address: " + eventDetailsEventAddressText + "\n"
                         + "Event Details: " + eventDetailsEventDescriptionText + "\n"
                         + "\n"
-                        + "Shared from An Amazing Events App";
+                        + "Shared from An Amazing Events App (Still waiting for the developer to add a link to accept the event)";
 
 
                 //Reference code modified from https://stackoverflow.com/questions/12952865/how-to-share-text-to-whatsapp-from-my-app#:~:text=Like%20most%20social%20apps%20on,sendIntent%20%3D%20new%20Intent()%3B%20sendIntent.
