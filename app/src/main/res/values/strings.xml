@@ -144,7 +144,13 @@
     <!-- Event Card Full Screen -->
     <string name="eventFullScreenTime">When?</string>
     <string name="eventFullScreenPlace">Where? </string>
-    <string name="eventFullScreenDescription">What?</string>
+    <string name="eventFullScreenDescription">The Details</string>
+    <string name="location">Location:</string>
+    <string name="address">Address:</string>
+    <string name="date">Date:</string>
+    <string name="time">Times</string>
+
+
 
 
 </resources>
