@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,8 @@ public class dashboard extends AppCompatActivity {
 
     public static final String DATABASE_NAME = "eventsDatabase";
 
+    private ImageView logOutButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,8 @@ public class dashboard extends AppCompatActivity {
 
         int userId = sp.getInt(UserDetails.KEY_USER_ID, UserDetails.DEFAULT_USER_ID);
 
+        logOutButton = findViewById(R.id.logOutButton);
+        logOutButton.setOnClickListener(this::onClick);
 
         //Need to do get request for all users events
         getEvents(userId);
@@ -180,6 +185,21 @@ public class dashboard extends AppCompatActivity {
             case R.id.newEventButton:
                 Intent newEventForm = new Intent(getApplicationContext(), com.example.myapplication.NewEvent.newEventForm.class);
                 startActivity(newEventForm);
+                break;
+            case R.id.logOutButton:
+                Intent logInPage = new Intent(getApplicationContext(), com.example.myapplication.Login.login.class);
+                Toast.makeText(getApplication().getBaseContext(), "Logged Out", Toast.LENGTH_LONG).show();
+
+                String sharedPreferencesFile = getString(R.string.sharedPreferencesFile);
+                SharedPreferences sp = getSharedPreferences(sharedPreferencesFile,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean(UserDetails.KEY_USER_LOGGED_IN, false);
+                editor.putInt(UserDetails.KEY_USER_ID, 0);
+                editor.putString(UserDetails.KEY_USERNAME, "");
+                editor.putString(UserDetails.KEY_USER_REAL_NAME, "");
+                editor.apply();
+
+                startActivity(logInPage);
 
 
         }
