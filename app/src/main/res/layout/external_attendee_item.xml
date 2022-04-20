@@ -27,16 +27,6 @@
         app:layout_constraintStart_toEndOf="@+id/externalAttendeeNumber"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/attendeeResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="8dp"
-        android:text="response"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -45,4 +35,12 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="35dp"
         android:alpha="0.2"/>
+
+    <Button
+        android:id="@+id/externalAttendeeItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="buttonText"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="-2dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

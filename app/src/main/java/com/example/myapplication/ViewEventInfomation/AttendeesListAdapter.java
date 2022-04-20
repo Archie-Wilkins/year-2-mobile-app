@@ -63,9 +63,9 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            attendeeNumber = itemView.findViewById(R.id.attendeeNumber);
+            attendeeNumber = itemView.findViewById(R.id.externalAttendeeNumber);
             attendeeResponse = itemView.findViewById(R.id.attendeeResponse);
-            attendeeName = itemView.findViewById(R.id.attendeeName);
+            attendeeName = itemView.findViewById(R.id.externalAttendeeName);
         }
     }
 }
