@@ -63,6 +63,7 @@ public class eventGridAdapter extends RecyclerView.Adapter<eventGridAdapter.View
         Intent intent = new Intent(v.getContext(), event_details.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("eventId", eventId);
+        intent.putExtra("shareable", true);
         v.getContext().startActivity(intent);
 //        Toast.makeText(context, "Welcome " + itemPosition , Toast.LENGTH_SHORT).show();
 

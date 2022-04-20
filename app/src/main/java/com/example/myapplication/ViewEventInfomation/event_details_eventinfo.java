@@ -33,15 +33,17 @@ public class event_details_eventinfo extends Fragment {
     TextView eventDetailsEventTitle;
     Button shareEventButton;
 
+    int eventId;
+    boolean shareable;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-       ;
+        eventId = getActivity().getIntent().getExtras().getInt("eventId");
+        shareable = getActivity().getIntent().getExtras().getBoolean("shareable");
 
-        int eventId = getActivity().getIntent().getExtras().getInt("eventId");
-        System.out.println(eventId + " FROM THE INTENT");
 
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
@@ -59,7 +61,14 @@ public class event_details_eventinfo extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_details_eventinfo, container, false);
 
         shareEventButton = view.findViewById(R.id.shareEventButton);
-        shareEventButton.setOnClickListener(this::onClick);
+        if(shareable == false){
+            //Remove element code taken from https://stackoverflow.com/questions/3995215/add-and-remove-views-in-android-dynamically
+            ((ViewGroup) shareEventButton.getParent()).removeView(shareEventButton);
+        }else {
+            shareEventButton.setOnClickListener(this::onClick);
+        }
+
+
 
         eventDetailsEventStartTime = view.findViewById(R.id.eventDetailsEventStartTime);
         eventDetailsEventDate = view.findViewById(R.id.eventDetailsEventDate);
@@ -119,7 +128,7 @@ public class event_details_eventinfo extends Fragment {
                         + "Address: " + eventDetailsEventAddressText + "\n"
                         + "Event Details: " + eventDetailsEventDescriptionText + "\n"
                         + "\n"
-                        + "View Event: www.facebookeventsknockoff.com" + "\n"
+                        + "View Event: www.facebookeventsknockoff.com?event=" + eventId + "\n"
                         + "Shared from An Amazing Events App";
 
 

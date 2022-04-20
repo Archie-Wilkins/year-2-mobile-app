@@ -19,8 +19,10 @@
                 <action android:name="android.intent.action.VIEW"></action>
                 <category android:name="android.intent.category.DEFAULT"></category>
                 <category android:name="android.intent.category.BROWSABLE"></category>
-                <data android:scheme="https"
-                    android:host="@string/internalLink"></data>
+
+                <data
+                    android:scheme="https"
+                    android:host="@string/internalLink" />
                 <data android:scheme="http"
                     android:host="@string/internalLink"></data>
             </intent-filter>
