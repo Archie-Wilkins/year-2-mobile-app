@@ -3,6 +3,7 @@ package com.example.myapplication.ExternalEventView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainer;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,14 +11,29 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.myapplication.Dashboard.eventGridFragment;
 import com.example.myapplication.R;
+import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.Room.Event;
 import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class external_event_view extends AppCompatActivity {
 
 
     int eventId;
+    ExecutorService executor;
+    private AppDatabase db;
 
 
     @Override
@@ -51,6 +67,8 @@ public class external_event_view extends AppCompatActivity {
 
 
 
+
+
             Intent currentIntent = this.getIntent();
             currentIntent.putExtra("eventId", eventId);
             currentIntent.putExtra("shareable", false);
@@ -65,8 +83,83 @@ public class external_event_view extends AppCompatActivity {
         }
 
 
+    }
 
+    private void getEvent(){
+        this.executor = Executors.newFixedThreadPool(4);
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest getEventsRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://archiewilkins.pythonanywhere.com/api/events/" + eventId, null,
+                response -> {
+                    System.out.println(response.toString());
+                    //need to get response size so I can list through and create event objects
+                    int responseLength = response.length();
+                    if(responseLength == 1) {
+
+                        try {
+                            String eventIdFromResponse = response.getJSONObject(String.valueOf(0)).getString("eventID");
+                            String hostId = response.getJSONObject(String.valueOf(0)).getString("hostID");
+                            String eventAddress = response.getJSONObject(String.valueOf(0)).getString("eventAddress");
+                            String eventTitle = response.getJSONObject(String.valueOf(0)).getString("eventTitle");
+                            String eventDescription = response.getJSONObject(String.valueOf(0)).getString("eventDescription");
+                            String eventType = response.getJSONObject(String.valueOf(0)).getString("eventType");
+                            String eventLocationName = response.getJSONObject(String.valueOf(0)).getString("eventLocationName");
+                            String eventStartTime = response.getJSONObject(String.valueOf(0)).getString("eventStartTime");
+                            String eventEndTime = response.getJSONObject(String.valueOf(0)).getString("eventEndTime");
+                            String eventDate = response.getJSONObject(String.valueOf(0)).getString("eventDate");
+//                        //eventAttendees is left null
+
+                            Event event = new Event(Integer.valueOf(eventIdFromResponse), Integer.valueOf(hostId), eventTitle, eventDescription, eventType, eventAddress, eventLocationName, eventStartTime, eventEndTime, eventDate);
+
+                            executor.execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(db.eventDao().exists(eventId)){
+                                        db.eventDao().update(event);
+                                    }else{
+                                        db.eventDao().insertEvent(event);
+                                    }
+                                };
+                            });
+
+                            awaitTerminationAfterShutdown(executor);
+
+
+                            Fragment fragment = new eventGridFragment();
+
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                },
+                error -> {
+                    System.out.println("Error");
+                    Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
+                }
+        );
+        requestQueue.add(getEventsRequest);
 
 
     }
+
+    public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
+        threadPool.shutdown();
+        try {
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+    }
+
+
 }

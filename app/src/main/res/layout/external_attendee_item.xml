@@ -27,20 +27,12 @@
         app:layout_constraintStart_toEndOf="@+id/externalAttendeeNumber"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:srcCompat="@drawable/line"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="35dp"
-        android:alpha="0.2"/>
-
     <Button
-        android:id="@+id/externalAttendeeItemButton"
+        android:id="@+id/externalSelectAttendeeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="buttonText"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="-2dp" />
+        android:text="Button"
+        tools:layout_editor_absoluteX="239dp"
+        tools:layout_editor_absoluteY="6dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

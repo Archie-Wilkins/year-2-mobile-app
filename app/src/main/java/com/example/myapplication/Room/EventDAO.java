@@ -3,6 +3,7 @@ package com.example.myapplication.Room;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Dao;
+import androidx.room.Update;
 
 
 import java.util.List;
@@ -21,4 +22,10 @@ public interface EventDAO {
 
     @Insert
     void insertEvent(Event... events);
+
+    @Query("SELECT EXISTS(SELECT * FROM Event WHERE eventId = :eventId)")
+    boolean exists(int eventId);
+
+    @Update
+    void update(Event event);
 }
