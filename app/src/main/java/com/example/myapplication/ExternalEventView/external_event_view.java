@@ -33,6 +33,24 @@ public class external_event_view extends AppCompatActivity {
 //          Toast.makeText(external_event_view.this, "Path = " + path, Toast.LENGTH_SHORT).show();
             System.out.println(eventId);
 
+            //Create room table for creating external event
+            //With event Id get users who have responded
+            //With event Id get users who haven't responded
+            //With event Id get event information
+            //3 API calls
+
+            //To Do
+            //1. Create Python API calls for getting users who have accepted
+            //2. Create Python API calls for getting users who are yet to respond
+            //3. Create API call for getting event information
+            //4. Create API call for getting attendees who have responded
+            //5. Create API call for getting attendees who have yet to respond
+
+            //7. Create adapter for viewing users who have responded
+            //8. Create adapter for viewing users who need to respond
+
+
+
             Intent currentIntent = this.getIntent();
             currentIntent.putExtra("eventId", eventId);
             currentIntent.putExtra("shareable", false);
