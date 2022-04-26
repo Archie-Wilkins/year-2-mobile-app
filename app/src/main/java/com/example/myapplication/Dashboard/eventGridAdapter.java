@@ -57,9 +57,6 @@ public class eventGridAdapter extends RecyclerView.Adapter<eventGridAdapter.View
         int eventId = eventIds.get(itemPosition);
         //bundle.putInt("eventId",eventId);
 
-
-
-
         Intent intent = new Intent(v.getContext(), event_details.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("eventId", eventId);
