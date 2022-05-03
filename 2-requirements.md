@@ -36,5 +36,7 @@ _Complete the information above and then enumerate your functional and non funct
 3. The app should provide an accessible interface i.e simple and clear layout, consistent navigation, readable text sizes 
 and distingushable colours
 4. For the MVP only English will be supported and it will be assumed all users are operationg on the GMT timezone
-5. The overall app size must be less than 100mb
+5. The overall app size must be less than 100mb on download
 6. The application only needs to be available on Android (API Version 27 and up) 
+
+Note Security has not been listed as a non-functional requirement because I intend to focus on creating usable features as a first-priority. 
