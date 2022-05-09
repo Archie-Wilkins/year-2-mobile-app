@@ -28,7 +28,6 @@ _Complete the information above and then enumerate your functional and non funct
 9. Event Organisers could recieve notifications when they have an event upcoming
 10. Event Organisers could be able to use QR codes to share events
 
-
 # Non-functional requirements 
 
 1. The app should load in under 5 seconds 
@@ -39,4 +38,20 @@ and distingushable colours
 5. The overall app size must be less than 100mb on download
 6. The application only needs to be available on Android (API Version 27 and up) 
 
-Note Security has not been listed as a non-functional requirement because I intend to focus on creating usable features as a first-priority. 
+Note Security has not been listed as a non-functional requirement because I intend to focus on creating usable features as a first-priority.
+
+
+<!-- 
+Formative comments from Sandy
+
+– There are a couple of places I think you can be a little more specific. For example, I think it's implied that the data that participants are entering is going to be saved, but it's not stated that their data will be stored or saved. So it'd be possible to create an app that fulfilled these requirements completely but that didn't save any information between reloads.
+
+- For your could-haves, these would seem to require the development of a server to support these kinds of actions too? If so, you'd need requirements related to this too, I think. (I don't expect you to go about implementing a client-server system.)
+
+– You have a good level of detail generally, though. You have a good level of specificity, but without tying yourself too strongly to specific implementational details.
+
+- I'd say the number of folks supported is a non-functional requirement? The lines aren't always clear, but the functionality is to support attendees, the number feels non functional, like other performance characteristics. Leave it if you don't agree, though :-)
+
+– Your NF requirements are all sensible too.
+
+-->

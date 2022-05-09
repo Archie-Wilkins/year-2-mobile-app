@@ -21,6 +21,14 @@ _Complete the information above and then write your 300-word API description her
 
 `Fragments` promoted code reusability e.g. the frequently used loading-screen fragment and enabled easy transiting from a loading segment to data-displaying segment when loading data. Activities could've been used but using fragments promoted better code modularity and seperation of concerns.  
 
+<!-- 
+Formative comments from Sandy
 
+– Make sure you adhere to the word limit. One of the marking criteria is "conciseness". Part of the challenge of the excerise is to be concise and selective about what you cover. So do try and get your word count down.
 
+– The strongest parts of this document is where you are able to offer the reader some insight into where alternatives existed, and why you went with the solution you went with over other options. You do this well, for example with the `RecyclerView' discussion. In other places, you have just stated what you have done e.g., with Volley or `TabLayout`. Remember, there's no expectation that this section is exhaustive; it's not necessary to include every API choice. What you want to do is focus on the most important/critical choices that you've made. Preferably, with these choices, you'll be able to offer the reader some insight into what the alternatives were and what the technical merits of your choice were. I think you can improve this by covering fewer things, but in more detail and giving more insight into the competing options.
+
+– Thanks for `backticking` your class names, makes it much clearer for me!
+
+-->
 
