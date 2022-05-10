@@ -15,7 +15,18 @@
     tools:context=".ExternalEventView.external_event_view">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/externalViewFragmentContainer"
+        android:id="@+id/externalViewFragmentContainerAttendeesResponded"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="415dp"
+        android:layout_height="731dp"
+        android:layout_marginTop="772dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesEventInfo"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
         android:layout_width="415dp"
         android:layout_height="731dp"
@@ -32,7 +43,7 @@
         android:layout_marginTop="100dp"
         android:text="Customer list to go here + let people accept events"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesEventInfo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

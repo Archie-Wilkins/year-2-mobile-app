@@ -2,29 +2,28 @@ package com.example.myapplication.ExternalEventView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainer;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.Dashboard.eventGridFragment;
+import com.example.myapplication.Dashboard.eventGridAdapter;
 import com.example.myapplication.R;
 import com.example.myapplication.Room.AppDatabase;
+import com.example.myapplication.Room.Attendee;
 import com.example.myapplication.Room.Event;
 import com.example.myapplication.Universal.loadingFragment;
 import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
 
 import org.json.JSONException;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,6 +34,7 @@ public class external_event_view extends AppCompatActivity {
 
     int eventId;
     ExecutorService executor;
+    ExecutorService executor2;
     private AppDatabase db;
 
 
@@ -80,7 +80,7 @@ public class external_event_view extends AppCompatActivity {
 
 
             getEvent();
-
+        getEventAttendees();
 //            Intent currentIntent = this.getIntent();
 //            currentIntent.putExtra("eventId", eventId);
 //            currentIntent.putExtra("shareable", false);
@@ -89,12 +89,18 @@ public class external_event_view extends AppCompatActivity {
 //            Fragment fragment = new event_details_eventinfo();
 //            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
 
-            Fragment fragment = new loadingFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
 
-        }else{
-            //display an error
-        }
+
+
+        Fragment fragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, fragment).commit();
+
+            Fragment fragment2 = new loadingFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesResponded, fragment2).commit();
+//
+//        }else{
+//            //display an error
+//        }
 
 
     }
@@ -153,7 +159,7 @@ public class external_event_view extends AppCompatActivity {
 
 
                             Fragment fragment = new event_details_eventinfo();
-                            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, fragment).commit();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -171,60 +177,54 @@ public class external_event_view extends AppCompatActivity {
     }
 
     private void getEventAttendees() {
-        this.executor = Executors.newFixedThreadPool(4);
+        this.executor2 = Executors.newFixedThreadPool(4);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JsonObjectRequest getEventsRequest = new JsonObjectRequest(
+        JsonObjectRequest getAttendeesRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "https://archiewilkins.pythonanywhere.com/api/events/" + eventId, null,
+                "https://archiewilkins.pythonanywhere.com/api/attendeesByEvent/" + eventId, null,
                 response -> {
                     System.out.println(response.toString());
                     //need to get response size so I can list through and create event objects
-                    int responseLength = response.length();
                     System.out.println(response);
                     System.out.println(response.toString());
 
+                    try{
+                    ArrayList<Attendee> attendeesList = new ArrayList<>();
+                    for (int index = 0; index < response.length(); index++) {
+                        String attendeeId = response.getJSONObject(String.valueOf(index)).getString("attendeeId");
+                        String attendeeName = response.getJSONObject(String.valueOf(index)).getString("attendeeName");
+                        String attendeeEventId = response.getJSONObject(String.valueOf(index)).getString("eventId");
+                        String attendeeResponse = response.getJSONObject(String.valueOf(index)).getString("response");
 
-                    try {
-                        String eventIdFromResponse = response.getString("eventID");
-                        String hostId = response.getString("hostID");
-                        String eventAddress = response.getString("eventAddress");
-                        String eventTitle = response.getString("eventTitle");
-                        String eventDescription = response.getString("eventDescription");
-                        String eventType = response.getString("eventType");
-                        String eventLocationName = response.getString("eventLocationName");
-                        String eventStartTime = response.getString("eventStartTime");
-                        String eventEndTime = response.getString("eventEndTime");
-                        String eventDate = response.getString("eventDate");
-//                        //eventAttendees is left null
+                        Attendee attendee = new Attendee(Integer.valueOf(attendeeId), Integer.valueOf(attendeeEventId), attendeeName, attendeeResponse);
+                        attendeesList.add(attendee);
+                    }
 
-                        Event event = new Event(Integer.valueOf(eventIdFromResponse), Integer.valueOf(hostId), eventTitle, eventDescription, eventType, eventAddress, eventLocationName, eventStartTime, eventEndTime, eventDate);
-
-                        executor.execute(new Runnable() {
+                    System.out.println(attendeesList);
+                        executor2.execute(new Runnable() {
                             @Override
                             public void run() {
-                                if(db.eventDao().exists(eventId)){
-                                    db.eventDao().update(event);
-                                }else{
-                                    db.eventDao().insertEvent(event);
+                                for(Attendee attendee : attendeesList) {
+                                    if (db.attendeeDAO().exists(attendee.getAttendeeId())) {
+                                        db.attendeeDAO().update(attendee);
+                                    } else {
+                                        db.attendeeDAO().insertAttendee(attendee);
+                                    }
                                 }
                             };
                         });
 
-                        awaitTerminationAfterShutdown(executor);
+                    awaitTerminationAfterShutdown(executor2);
 
 
-//                            Fragment fragment = new eventGridFragment();
-//
-//                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
-
-                        Intent currentIntent = this.getIntent();
-                        currentIntent.putExtra("eventId", eventId);
-                        currentIntent.putExtra("shareable", false);
+                    Intent currentIntent2 = this.getIntent();
+                    currentIntent2.putExtra("eventId", eventId);
 
 
-                        Fragment fragment = new event_details_eventinfo();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
+                  Fragment fragment2 = new externalAttendeesList();
+                  getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesResponded, fragment2).commit();
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -238,7 +238,7 @@ public class external_event_view extends AppCompatActivity {
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
-        requestQueue.add(getEventsRequest);
+        requestQueue.add(getAttendeesRequest);
     }
 
 

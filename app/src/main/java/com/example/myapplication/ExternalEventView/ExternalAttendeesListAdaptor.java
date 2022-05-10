@@ -41,7 +41,7 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     @NonNull
     @Override
     public ExternalAttendeesListAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.attendee_item, parent, false);
+        View view = inflater.inflate(R.layout.external_attendee_item, parent, false);
         //view.setOnClickListener(this::onClick);
         return new ViewHolder(view);
     }
@@ -49,8 +49,8 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     @Override
     public void onBindViewHolder(@NonNull ExternalAttendeesListAdaptor.ViewHolder holder, int position) {
         holder.externalAttendeeName.setText(externalAttendeeName.get(position));
-        holder.externalAttendeeName.setText(String.valueOf(position + 1) + " - ");
-        holder.externalSelectAttendeeButton.setText("This is me");
+        holder.externalAttendeeNumber.setText(String.valueOf(position + 1) + " - ");
+        holder.externalAttendeeResponse.setText(externalAttendeeName.get(position));
     }
 
     @Override
@@ -60,15 +60,15 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView externalAttendeeName;
-        TextView externalNumber;
-        Button externalSelectAttendeeButton;
+        TextView externalAttendeeNumber;
+        TextView externalAttendeeResponse;
 
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             externalAttendeeName = itemView.findViewById(R.id.externalAttendeeName);
-            externalNumber = itemView.findViewById(R.id.externalAttendeeNumber);
-            externalSelectAttendeeButton = itemView.findViewById(R.id.externalSelectAttendeeButton);
+            externalAttendeeNumber = itemView.findViewById(R.id.externalAttendeeNumber);
+            externalAttendeeResponse = itemView.findViewById(R.id.externalAttendeeResponse);
 
 
         }
