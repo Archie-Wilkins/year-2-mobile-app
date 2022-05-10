@@ -37,7 +37,6 @@ import java.util.concurrent.TimeUnit;
 
 public class event_details_attendeesinfo extends Fragment {
 
-
     ExecutorService executor;
     private Button addAttendeeButton;
     private EditText attendeeNameInput;

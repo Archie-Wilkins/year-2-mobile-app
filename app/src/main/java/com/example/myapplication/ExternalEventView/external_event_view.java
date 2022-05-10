@@ -19,10 +19,12 @@ import com.example.myapplication.Dashboard.eventGridFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.Room.AppDatabase;
 import com.example.myapplication.Room.Event;
+import com.example.myapplication.Universal.loadingFragment;
 import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
 
 import org.json.JSONException;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -64,19 +66,31 @@ public class external_event_view extends AppCompatActivity {
 
             //7. Create adapter for viewing users who have responded
             //8. Create adapter for viewing users who need to respond
+            //
+
+          //Refactor if time
+          this.db = Room.databaseBuilder(
+                  getApplicationContext(),
+                  AppDatabase.class,
+                  "eventsDatabase"
+          ).build();
+
+     }
 
 
 
+            getEvent();
 
+//            Intent currentIntent = this.getIntent();
+//            currentIntent.putExtra("eventId", eventId);
+//            currentIntent.putExtra("shareable", false);
+//
+//
+//            Fragment fragment = new event_details_eventinfo();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
 
-            Intent currentIntent = this.getIntent();
-            currentIntent.putExtra("eventId", eventId);
-            currentIntent.putExtra("shareable", false);
-
-
-            Fragment fragment = new event_details_eventinfo();
+            Fragment fragment = new loadingFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
-
 
         }else{
             //display an error
@@ -85,9 +99,8 @@ public class external_event_view extends AppCompatActivity {
 
     }
 
-    private void getEvent(){
+    private void getEvent() {
         this.executor = Executors.newFixedThreadPool(4);
-
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest getEventsRequest = new JsonObjectRequest(
@@ -97,19 +110,21 @@ public class external_event_view extends AppCompatActivity {
                     System.out.println(response.toString());
                     //need to get response size so I can list through and create event objects
                     int responseLength = response.length();
-                    if(responseLength == 1) {
+                    System.out.println(response);
+                    System.out.println(response.toString());
+
 
                         try {
-                            String eventIdFromResponse = response.getJSONObject(String.valueOf(0)).getString("eventID");
-                            String hostId = response.getJSONObject(String.valueOf(0)).getString("hostID");
-                            String eventAddress = response.getJSONObject(String.valueOf(0)).getString("eventAddress");
-                            String eventTitle = response.getJSONObject(String.valueOf(0)).getString("eventTitle");
-                            String eventDescription = response.getJSONObject(String.valueOf(0)).getString("eventDescription");
-                            String eventType = response.getJSONObject(String.valueOf(0)).getString("eventType");
-                            String eventLocationName = response.getJSONObject(String.valueOf(0)).getString("eventLocationName");
-                            String eventStartTime = response.getJSONObject(String.valueOf(0)).getString("eventStartTime");
-                            String eventEndTime = response.getJSONObject(String.valueOf(0)).getString("eventEndTime");
-                            String eventDate = response.getJSONObject(String.valueOf(0)).getString("eventDate");
+                            String eventIdFromResponse = response.getString("eventID");
+                            String hostId = response.getString("hostID");
+                            String eventAddress = response.getString("eventAddress");
+                            String eventTitle = response.getString("eventTitle");
+                            String eventDescription = response.getString("eventDescription");
+                            String eventType = response.getString("eventType");
+                            String eventLocationName = response.getString("eventLocationName");
+                            String eventStartTime = response.getString("eventStartTime");
+                            String eventEndTime = response.getString("eventEndTime");
+                            String eventDate = response.getString("eventDate");
 //                        //eventAttendees is left null
 
                             Event event = new Event(Integer.valueOf(eventIdFromResponse), Integer.valueOf(hostId), eventTitle, eventDescription, eventType, eventAddress, eventLocationName, eventStartTime, eventEndTime, eventDate);
@@ -128,14 +143,22 @@ public class external_event_view extends AppCompatActivity {
                             awaitTerminationAfterShutdown(executor);
 
 
-                            Fragment fragment = new eventGridFragment();
+//                            Fragment fragment = new eventGridFragment();
+//
+//                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
 
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
+                            Intent currentIntent = this.getIntent();
+                            currentIntent.putExtra("eventId", eventId);
+                            currentIntent.putExtra("shareable", false);
+
+
+                            Fragment fragment = new event_details_eventinfo();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                    }
+
 
 
                 },
@@ -145,9 +168,83 @@ public class external_event_view extends AppCompatActivity {
                 }
         );
         requestQueue.add(getEventsRequest);
-
-
     }
+
+    private void getEventAttendees() {
+        this.executor = Executors.newFixedThreadPool(4);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest getEventsRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://archiewilkins.pythonanywhere.com/api/events/" + eventId, null,
+                response -> {
+                    System.out.println(response.toString());
+                    //need to get response size so I can list through and create event objects
+                    int responseLength = response.length();
+                    System.out.println(response);
+                    System.out.println(response.toString());
+
+
+                    try {
+                        String eventIdFromResponse = response.getString("eventID");
+                        String hostId = response.getString("hostID");
+                        String eventAddress = response.getString("eventAddress");
+                        String eventTitle = response.getString("eventTitle");
+                        String eventDescription = response.getString("eventDescription");
+                        String eventType = response.getString("eventType");
+                        String eventLocationName = response.getString("eventLocationName");
+                        String eventStartTime = response.getString("eventStartTime");
+                        String eventEndTime = response.getString("eventEndTime");
+                        String eventDate = response.getString("eventDate");
+//                        //eventAttendees is left null
+
+                        Event event = new Event(Integer.valueOf(eventIdFromResponse), Integer.valueOf(hostId), eventTitle, eventDescription, eventType, eventAddress, eventLocationName, eventStartTime, eventEndTime, eventDate);
+
+                        executor.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(db.eventDao().exists(eventId)){
+                                    db.eventDao().update(event);
+                                }else{
+                                    db.eventDao().insertEvent(event);
+                                }
+                            };
+                        });
+
+                        awaitTerminationAfterShutdown(executor);
+
+
+//                            Fragment fragment = new eventGridFragment();
+//
+//                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
+
+                        Intent currentIntent = this.getIntent();
+                        currentIntent.putExtra("eventId", eventId);
+                        currentIntent.putExtra("shareable", false);
+
+
+                        Fragment fragment = new event_details_eventinfo();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+                },
+                error -> {
+                    System.out.println("Error");
+                    Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
+                }
+        );
+        requestQueue.add(getEventsRequest);
+    }
+
+
+
+
+
 
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
