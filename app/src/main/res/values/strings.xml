@@ -161,8 +161,8 @@
 
     <!-- External Attendeee Item    -->
     <string name="inviteResponseYes">✔</string>
-    <string name="inviteResponseNo">❌</string>
-    <string name="inviteResponseMaybe">?</string>
+    <string name="inviteResponseNo">✖</string>
+    <string name="inviteResponseMaybe">&#x3f;</string>
 
 
 </resources>

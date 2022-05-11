@@ -11,26 +11,34 @@
         android:id="@+id/inviteResponseMaybe"
         android:layout_width="58dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#4CAF50"
         android:text="@string/inviteResponseMaybe"
-        tools:layout_editor_absoluteX="343dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inviteResponseNo"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/inviteResponseNo"
         android:layout_width="58dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#4CAF50"
         android:text="@string/inviteResponseNo"
-        tools:layout_editor_absoluteX="265dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inviteResponseYes"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/externalAttendeeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="28dp"
         android:text="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,8 +47,7 @@
         android:id="@+id/externalAttendeeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="28dp"
         android:text="attendeeName"
         app:layout_constraintStart_toEndOf="@+id/externalAttendeeNumber"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,9 +56,25 @@
         android:id="@+id/inviteResponseYes"
         android:layout_width="58dp"
         android:layout_height="45dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#4CAF50"
         android:text="@string/inviteResponseYes"
-        tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inviteResponseMaybe"
+        app:srcCompat="@drawable/line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

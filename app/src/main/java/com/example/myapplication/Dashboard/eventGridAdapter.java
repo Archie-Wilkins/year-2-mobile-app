@@ -51,7 +51,6 @@ public class eventGridAdapter extends RecyclerView.Adapter<eventGridAdapter.View
     public void onClick(View v) {
         RecyclerView.ViewHolder holder = recyclerView.getChildViewHolder(v);
         int itemPosition = holder.getAdapterPosition();
-
         //add bundle here
         Bundle bundle = new Bundle();
         int eventId = eventIds.get(itemPosition);
