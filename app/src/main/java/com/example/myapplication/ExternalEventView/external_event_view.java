@@ -240,15 +240,15 @@ public class external_event_view extends AppCompatActivity {
 
 //                No List
                 Fragment noListFragment = new externalAttendeesList();
-                Bundle noBundle = new Bundle();
-                noBundle.putString("response", "No");
-                noListFragment.setArguments(noBundle);
+                Bundle declinedBundle = new Bundle();
+                declinedBundle.putString("response", "No");
+                noListFragment.setArguments(declinedBundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNo, noListFragment).commit();
 
 //              Maybe List
               Fragment maybeListFragment = new externalAttendeesList();
               Bundle maybeBundle = new Bundle();
-              noBundle.putString("response", "Maybe");
+              maybeBundle.putString("response", "Maybe");
               maybeListFragment.setArguments(maybeBundle);
               getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
 

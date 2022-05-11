@@ -58,7 +58,7 @@ public class externalAttendeesList extends Fragment {
         ExecutorService executor = Executors.newFixedThreadPool(4);
         executor.execute(new Runnable() {
 
-;
+
 
             @Override
             public void run() {

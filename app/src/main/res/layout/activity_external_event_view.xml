@@ -17,8 +17,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesRespondedYes"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
-        android:layout_width="415dp"
-        android:layout_height="731dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,8 +28,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesRespondedNo"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
-        android:layout_width="415dp"
-        android:layout_height="731dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesRespondedMaybe"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
-        android:layout_width="415dp"
-        android:layout_height="731dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,10 +48,10 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesEventInfo"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
-        android:layout_width="415dp"
-        android:layout_height="731dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
