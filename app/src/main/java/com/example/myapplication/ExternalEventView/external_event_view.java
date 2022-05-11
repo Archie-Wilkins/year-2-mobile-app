@@ -2,7 +2,6 @@ package com.example.myapplication.ExternalEventView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
@@ -14,7 +13,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.Dashboard.eventGridAdapter;
 import com.example.myapplication.R;
 import com.example.myapplication.Room.AppDatabase;
 import com.example.myapplication.Room.Attendee;
@@ -92,12 +90,22 @@ public class external_event_view extends AppCompatActivity {
 
 
 
-        Fragment fragment = new loadingFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, fragment).commit();
+        Fragment eventInfoFragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, eventInfoFragment).commit();
 
-            Fragment fragment2 = new loadingFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesResponded, fragment2).commit();
+        Fragment yesListFragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedYes, yesListFragment).commit();
+
+        Fragment noListFragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNo, noListFragment).commit();
 //
+        Fragment maybeListFragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
+//
+
+
+            //
+
 //        }else{
 //            //display an error
 //        }
@@ -218,12 +226,32 @@ public class external_event_view extends AppCompatActivity {
                     awaitTerminationAfterShutdown(executor2);
 
 
-                    Intent currentIntent2 = this.getIntent();
-                    currentIntent2.putExtra("eventId", eventId);
+//                    Intent currentIntent2 = this.getIntent();
+//                    currentIntent2.putExtra("eventId", eventId);
+//
+
+//                Yes List
+                  Fragment yesListFragment = new externalAttendeesList();
+                  Bundle yesBundle = new Bundle();
+                  yesBundle.putString("response", "Yes");
+                  yesListFragment.setArguments(yesBundle);
+                  getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedYes, yesListFragment).commit();
 
 
-                  Fragment fragment2 = new externalAttendeesList();
-                  getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesResponded, fragment2).commit();
+//                No List
+                Fragment noListFragment = new externalAttendeesList();
+                Bundle noBundle = new Bundle();
+                noBundle.putString("response", "No");
+                noListFragment.setArguments(noBundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNo, noListFragment).commit();
+
+//              Maybe List
+              Fragment maybeListFragment = new externalAttendeesList();
+              Bundle maybeBundle = new Bundle();
+              noBundle.putString("response", "Maybe");
+              maybeListFragment.setArguments(maybeBundle);
+              getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
+
 
 
                     } catch (JSONException e) {

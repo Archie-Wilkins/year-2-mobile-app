@@ -40,7 +40,10 @@ public class attendeesListFragment extends Fragment {
 //        String eventId = getActivity().getIntent().getExtras().getString("eventId");
        Bundle bundle = this.getArguments();
         String eventId = bundle.getString("eventId");
+
         //get responses and attendees
+
+
 
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);

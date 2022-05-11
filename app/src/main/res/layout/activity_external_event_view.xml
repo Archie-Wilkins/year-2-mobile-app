@@ -15,15 +15,35 @@
     tools:context=".ExternalEventView.external_event_view">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/externalViewFragmentContainerAttendeesResponded"
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedYes"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
         android:layout_width="415dp"
         android:layout_height="731dp"
-        android:layout_marginTop="772dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/yesListTitle" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedNo"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="415dp"
+        android:layout_height="731dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noListTitle" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedMaybe"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="415dp"
+        android:layout_height="731dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maybeListTitle" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesEventInfo"
@@ -36,14 +56,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/yesListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="100dp"
-        android:text="Customer list to go here + let people accept events"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedYes"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesEventInfo" />
+
+    <TextView
+        android:id="@+id/noListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedNo"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedYes" />
+
+    <TextView
+        android:id="@+id/maybeListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedMaybe"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedNo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

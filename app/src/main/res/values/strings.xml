@@ -153,4 +153,11 @@
     <!-- App Interal Link    -->
     <string name="internalLink">www.facebookeventsknockoff.com</string>
 
+    <!-- External Attendees View -->
+    <string name="respondedYes">Coming</string>
+    <string name="respondedNo">Declined</string>
+    <string name="respondedMaybe">Maybes</string>
+    <string name="notResponded">Waiting For A Response</string>
+
+
 </resources>

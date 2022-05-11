@@ -50,16 +50,19 @@ public class externalAttendeesList extends Fragment {
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
 
+        int eventId = getActivity().getIntent().getExtras().getInt("eventId");
+        Bundle bundle = this.getArguments();
+        String responseMessage = bundle.getString("response");
+
 
         ExecutorService executor = Executors.newFixedThreadPool(4);
         executor.execute(new Runnable() {
 
-            int eventId = getActivity().getIntent().getExtras().getInt("eventId");
-
+;
 
             @Override
             public void run() {
-                attendeeInfo = db.attendeeDAO().getAllAttendeeInfoByResponseAndEvent(eventId, "Yes");
+                attendeeInfo = db.attendeeDAO().getAllAttendeeInfoByResponseAndEvent(eventId, responseMessage);
 
                 for(Attendee attendee : attendeeInfo){
                     attendeeNameList.add(attendee.getAttendeeName());
