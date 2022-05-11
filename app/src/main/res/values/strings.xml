@@ -159,5 +159,10 @@
     <string name="respondedMaybe">Maybes</string>
     <string name="notResponded">Waiting For A Response</string>
 
+    <!-- External Attendeee Item    -->
+    <string name="inviteResponseYes">✔</string>
+    <string name="inviteResponseNo">❌</string>
+    <string name="inviteResponseMaybe">?</string>
+
 
 </resources>

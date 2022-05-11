@@ -15,6 +15,28 @@
     tools:context=".ExternalEventView.external_event_view">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedNoResponse"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maybeListTitle2" />
+
+    <TextView
+        android:id="@+id/maybeListTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/notResponded"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedMaybe" />
+
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/externalViewFragmentContainerAttendeesRespondedYes"
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
         android:layout_width="match_parent"
@@ -50,6 +72,7 @@
         android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

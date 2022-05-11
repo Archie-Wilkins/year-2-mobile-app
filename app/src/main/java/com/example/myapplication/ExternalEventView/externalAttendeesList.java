@@ -39,12 +39,10 @@ public class externalAttendeesList extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
-
         View view = inflater.inflate(R.layout.fragment_external_attendees_list, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.externalAttendeesListRecyclerView);
-        adapter = new AttendeesListAdapter(inflater, responseList, attendeeNameList, attendeesListView, getActivity().getApplicationContext());
+        adapter = new AttendeesListAdapter(inflater, responseList, attendeeNameList, getActivity().getApplicationContext());
 
 
         Context context = getContext();

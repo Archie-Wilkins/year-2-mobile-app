@@ -19,14 +19,13 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
     LayoutInflater inflater;
     List<String> response;
     List<String> attendeeName;
-    RecyclerView recyclerView;
+
     Context context;
 
-    public AttendeesListAdapter(LayoutInflater inflater, List<String> response, List<String> attendeeName, RecyclerView recyclerView, Context context) {
+    public AttendeesListAdapter(LayoutInflater inflater, List<String> response, List<String> attendeeName, Context context) {
         this.inflater = inflater;
         this.response = response;
         this.attendeeName = attendeeName;
-        this.recyclerView = recyclerView;
         this.context = context;
     }
 

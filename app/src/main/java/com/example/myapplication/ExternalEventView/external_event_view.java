@@ -19,6 +19,7 @@ import com.example.myapplication.Room.Attendee;
 import com.example.myapplication.Room.Event;
 import com.example.myapplication.Universal.loadingFragment;
 import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
+import com.example.myapplication.externalAttendeesAwaitingResponse;
 
 import org.json.JSONException;
 
@@ -101,7 +102,9 @@ public class external_event_view extends AppCompatActivity {
 //
         Fragment maybeListFragment = new loadingFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
-//
+
+        Fragment noResponseListFragment = new loadingFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNoResponse, noResponseListFragment).commit();
 
 
             //
@@ -251,6 +254,10 @@ public class external_event_view extends AppCompatActivity {
               maybeBundle.putString("response", "Maybe");
               maybeListFragment.setArguments(maybeBundle);
               getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
+
+//              No Response List
+               Fragment noResponseFragment = new externalAttendeesAwaitingResponse();
+               getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNoResponse, noResponseFragment).commit();
 
 
 

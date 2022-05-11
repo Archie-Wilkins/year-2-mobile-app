@@ -20,21 +20,17 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
 
     LayoutInflater inflater;
     List<String> externalAttendeeName;
-    RecyclerView recyclerView;
     Context context;
 
-    public ExternalAttendeesListAdaptor(LayoutInflater inflater, List<String> externalAttendeeName, RecyclerView recyclerView, Context context) {
+    public ExternalAttendeesListAdaptor(LayoutInflater inflater, List<String> externalAttendeeName, Context context) {
         this.inflater = inflater;
         this.externalAttendeeName = externalAttendeeName;
-        this.recyclerView = recyclerView;
         this.context = context;
     }
 
     @Override
     public void onClick(View view) {
-        //Set response value to be selected name
-        //form at the bottom
-        //
+        System.out.println("Nice");
 
     }
 
@@ -42,7 +38,7 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     @Override
     public ExternalAttendeesListAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.external_attendee_item, parent, false);
-        //view.setOnClickListener(this::onClick);
+        view.setOnClickListener(this::onClick);
         return new ViewHolder(view);
     }
 
@@ -50,7 +46,6 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     public void onBindViewHolder(@NonNull ExternalAttendeesListAdaptor.ViewHolder holder, int position) {
         holder.externalAttendeeName.setText(externalAttendeeName.get(position));
         holder.externalAttendeeNumber.setText(String.valueOf(position + 1) + " - ");
-        holder.externalAttendeeResponse.setText(externalAttendeeName.get(position));
     }
 
     @Override
@@ -61,15 +56,18 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView externalAttendeeName;
         TextView externalAttendeeNumber;
-        TextView externalAttendeeResponse;
-
+        Button inviteResponseYes;
+        Button inviteResponseNo;
+        Button inviteResponseMaybe;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             externalAttendeeName = itemView.findViewById(R.id.externalAttendeeName);
             externalAttendeeNumber = itemView.findViewById(R.id.externalAttendeeNumber);
-            externalAttendeeResponse = itemView.findViewById(R.id.externalAttendeeResponse);
-
+            inviteResponseYes = itemView.findViewById(R.id.inviteResponseYes);
+            inviteResponseNo = itemView.findViewById(R.id.inviteResponseNo);
+//            inviteResponseMaybe = itemView.findViewById(R.id.inviteResponseMaybe);
+            inviteResponseMaybe = itemView.findViewById(R.id.eventCardEndTime);
 
         }
 
