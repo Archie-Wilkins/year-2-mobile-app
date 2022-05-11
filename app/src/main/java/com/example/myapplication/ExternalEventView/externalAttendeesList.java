@@ -42,7 +42,7 @@ public class externalAttendeesList extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_external_attendees_list, container, false);
-        
+
         RecyclerView recyclerView = view.findViewById(R.id.externalAttendeesListRecyclerView);
         adapter = new AttendeesListAdapter(inflater, responseList, attendeeNameList, attendeesListView, getActivity().getApplicationContext());
 
