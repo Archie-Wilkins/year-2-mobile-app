@@ -1,7 +1,7 @@
 WhatsEvents ReadMe
 
 Key features to look at:
-- Logging in app supports multiple accounts (suggested is but could use) 
+- Logging in app supports multiple accounts (created username: "Sandy111", password: "password" for demonstration but other accounts exist e.g. username: "Keith245", password: "password" ) 
 - Viewing events - select event from dashboard 
 - Adding event (button in bottom right corner of dashboard) 
 - Logging out top right 
