@@ -41,9 +41,9 @@ public class event_details_eventinfo extends Fragment {
                              Bundle savedInstanceState) {
 
 
+
         eventId = getActivity().getIntent().getExtras().getInt("eventId");
         shareable = getActivity().getIntent().getExtras().getBoolean("shareable");
-
 
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);

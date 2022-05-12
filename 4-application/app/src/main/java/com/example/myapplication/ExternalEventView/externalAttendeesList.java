@@ -57,7 +57,6 @@ public class externalAttendeesList extends Fragment {
         executor.execute(new Runnable() {
 
 
-
             @Override
             public void run() {
                 attendeeInfo = db.attendeeDAO().getAllAttendeeInfoByResponseAndEvent(eventId, responseMessage);

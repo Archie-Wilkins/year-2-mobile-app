@@ -1,6 +1,7 @@
 package com.example.myapplication.Room;
 
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Dao;
 import androidx.room.Update;
@@ -20,7 +21,7 @@ public interface EventDAO {
     @Query("DELETE FROM Event")
     void deleteAllEvents();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEvent(Event... events);
 
     @Query("SELECT EXISTS(SELECT * FROM Event WHERE eventId = :eventId)")

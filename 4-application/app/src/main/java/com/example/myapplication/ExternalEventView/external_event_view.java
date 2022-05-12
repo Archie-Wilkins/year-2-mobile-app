@@ -44,38 +44,26 @@ public class external_event_view extends AppCompatActivity {
 
 
         Uri uri = getIntent().getData();
-        if(uri != null){
+        if(uri != null) {
             String path = uri.toString();
             eventId = Integer.valueOf(uri.getQueryParameter("event"));
+        }else {
+            try {
+                 eventId = getIntent().getExtras().getInt("eventId");
+                System.out.println("Pause");
+            }catch (Exception e){
+
+            }
+            }
 //          Toast.makeText(external_event_view.this, "Path = " + path, Toast.LENGTH_SHORT).show();
-            System.out.println(eventId);
+        System.out.println("Event id " + eventId);
 
-            //Create room table for creating external event
-            //With event Id get users who have responded
-            //With event Id get users who haven't responded
-            //With event Id get event information
-            //3 API calls
-
-            //To Do
-            //1. Create Python API calls for getting users who have accepted
-            //2. Create Python API calls for getting users who are yet to respond
-            //3. Create API call for getting event information
-            //4. Create API call for getting attendees who have responded
-            //5. Create API call for getting attendees who have yet to respond
-
-            //7. Create adapter for viewing users who have responded
-            //8. Create adapter for viewing users who need to respond
-            //
-
-          //Refactor if time
-          this.db = Room.databaseBuilder(
-                  getApplicationContext(),
-                  AppDatabase.class,
-                  "eventsDatabase"
-          ).build();
-
-     }
-
+        //Refactor if time
+        this.db = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                "eventsDatabase"
+        ).build();
 
 
             getEvent();
@@ -119,17 +107,14 @@ public class external_event_view extends AppCompatActivity {
     private void getEvent() {
         this.executor = Executors.newFixedThreadPool(4);
 
+        System.out.println(eventId);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest getEventsRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 "https://archiewilkins.pythonanywhere.com/api/events/" + eventId, null,
                 response -> {
                     System.out.println(response.toString());
-                    //need to get response size so I can list through and create event objects
-                    int responseLength = response.length();
-                    System.out.println(response);
-                    System.out.println(response.toString());
-
+                    System.out.println("Step 1");
 
                         try {
                             String eventIdFromResponse = response.getString("eventID");
@@ -149,11 +134,8 @@ public class external_event_view extends AppCompatActivity {
                             executor.execute(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if(db.eventDao().exists(eventId)){
-                                        db.eventDao().update(event);
-                                    }else{
+
                                         db.eventDao().insertEvent(event);
-                                    }
                                 };
                             });
 
@@ -170,6 +152,8 @@ public class external_event_view extends AppCompatActivity {
 
 
                             Fragment fragment = new event_details_eventinfo();
+
+
                             getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, fragment).commit();
 
                         } catch (JSONException e) {
@@ -217,11 +201,7 @@ public class external_event_view extends AppCompatActivity {
                             @Override
                             public void run() {
                                 for(Attendee attendee : attendeesList) {
-                                    if (db.attendeeDAO().exists(attendee.getAttendeeId())) {
-                                        db.attendeeDAO().update(attendee);
-                                    } else {
                                         db.attendeeDAO().insertAttendee(attendee);
-                                    }
                                 }
                             };
                         });

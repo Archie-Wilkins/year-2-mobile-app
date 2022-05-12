@@ -2,6 +2,7 @@ package com.example.myapplication.Room;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -19,7 +20,7 @@ public interface AttendeeDAO {
     @Query("DELETE FROM Attendee")
     void resetTable();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAttendee(Attendee... attendees);
 
     @Update
@@ -30,6 +31,9 @@ public interface AttendeeDAO {
 
     @Query("SELECT * FROM Attendee WHERE eventId = :eventid AND response = :response")
     List<Attendee> getAllAttendeeInfoByResponseAndEvent(int eventid, String response);
+
+    @Query("SELECT * FROM Attendee WHERE id = :attendeeid")
+    Attendee getAttendeeByID(int attendeeid);
 
 
 }
