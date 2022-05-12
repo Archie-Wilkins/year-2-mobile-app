@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\event_grid_card.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\event_grid_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_event_details.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\activity_event_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_external_event_view.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\activity_external_event_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_loading.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_loading.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_event_grid.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_event_grid.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\attendee_item.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\attendee_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_attendees_list.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_attendees_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_external_attendees_awaiting_response.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_external_attendees_awaiting_response.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_external_attendees_list.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_external_attendees_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\external_attendee_item.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\external_attendee_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_event_details_attendeesinfo.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_event_details_attendeesinfo.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_new_event_form.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\activity_new_event_form.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_event_details_eventinfo.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\fragment_event_details_eventinfo.xml"
+    },
+    {
+        "merged": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dashboard.xml",
+        "source": "C:\\Users\\archi\\OneDrive\\Documents\\Mobile Assessment\\mobile-assessment\\app\\src\\main\\res\\layout\\activity_dashboard.xml"
+    }
+]

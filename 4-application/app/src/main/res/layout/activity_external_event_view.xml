@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteX="105dp"
+    tools:layout_editor_absoluteY="250dp">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExternalEventView.external_event_view">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedNoResponse"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maybeListTitle2" />
+
+    <TextView
+        android:id="@+id/maybeListTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/notResponded"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedMaybe" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedYes"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yesListTitle" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedNo"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noListTitle" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesRespondedMaybe"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maybeListTitle" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/externalViewFragmentContainerAttendeesEventInfo"
+        android:name="com.example.myapplication.ViewEventInfomation.event_details_eventinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yesListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedYes"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesEventInfo" />
+
+    <TextView
+        android:id="@+id/noListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedNo"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedYes" />
+
+    <TextView
+        android:id="@+id/maybeListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/respondedMaybe"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/externalViewFragmentContainerAttendeesRespondedNo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
