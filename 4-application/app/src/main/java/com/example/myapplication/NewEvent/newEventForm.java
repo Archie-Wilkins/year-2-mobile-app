@@ -90,6 +90,13 @@ public class newEventForm extends AppCompatActivity {
         String eventType = eventTypeInput.getText().toString();
         String eventDescription = eventDescriptionInput.getText().toString();
 
+        //Validation here
+//        1. Title can't be null
+
+
+
+
+
 //        Creating Json Object
         HashMap<String, String> JsonMap = new HashMap<>();
         JsonMap.put("hostID", String.valueOf(hostId));
@@ -122,7 +129,7 @@ public class newEventForm extends AppCompatActivity {
 
 
                         }else{
-                            Toast.makeText(getApplication().getBaseContext(), "Whoops looks like you didnt enter something correctly", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplication().getBaseContext(), "Whoops looks like you didn't enter something correctly", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

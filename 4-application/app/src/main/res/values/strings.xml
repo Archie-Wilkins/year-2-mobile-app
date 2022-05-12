@@ -118,6 +118,7 @@
     <string name="sharedPreferencesFile">userDetailsSP</string>
 
     <!-- New Event Form    -->
+    <string name="eventFormTitle">Create New Event </string>
     <string name="eventTitle">Event Title</string>
     <string name="eventLocation">Location</string>
     <string name="eventPostCode">Post Code (Optional)</string>

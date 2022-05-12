@@ -17,133 +17,14 @@
 
 
         <TextView
-            android:id="@+id/eventStartTime"
-            android:layout_width="288dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="804dp"
-            android:text="@string/eventStartTime"
+            android:id="@+id/eventFormTitle"
+            android:layout_width="271dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/eventFormTitle"
+            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.152"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:inputType="time"/>
-
-        <EditText
-            android:id="@+id/editTextTextPostalAddress8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="956dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/eventEndTime"
-            android:layout_width="291dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="916dp"
-            android:text="@string/eventEndTime"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:inputType="time"/>
-
-        <Button
-            android:id="@+id/eventSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1224dp"
-            android:text="@string/eventSubmit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.414"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/startTimeInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="840dp"
-            android:ems="10"
-            android:inputType="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/eventDescription"
-            android:layout_width="274dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="1136dp"
-            android:text="@string/eventDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.136"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/eventTypeInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1060dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/endTimeInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="956dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/eventType"
-            android:layout_width="292dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="1028dp"
-            android:text="@string/eventType"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.115"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/descriptionInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1180dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/eventLocationInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="204dp"
-            android:layout_marginEnd="182dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.128"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -151,87 +32,198 @@
             android:id="@+id/eventTitle"
             android:layout_width="271dp"
             android:layout_height="44dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="56dp"
             android:text="@string/eventTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
+            app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/eventPostCode"
-            android:layout_width="273dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="276dp"
-            android:text="@string/eventPostCode"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/eventLocation"
-            android:layout_width="137dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="172dp"
-            android:text="@string/eventLocation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.076"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/eventFormTitle" />
 
         <TextView
             android:id="@+id/eventDate"
             android:layout_width="288dp"
             android:layout_height="36dp"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="22dp"
             android:text="@string/eventDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.168"
+            app:layout_constraintHorizontal_bias="0.162"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/postCodeInput" />
 
         <EditText
             android:id="@+id/eventTitleInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="108dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintHorizontal_bias="0.099"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
+
+        <TextView
+            android:id="@+id/eventLocation"
+            android:layout_width="137dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/eventLocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventTitleInput" />
+
+        <EditText
+            android:id="@+id/postCodeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventPostCode" />
+
+        <EditText
+            android:id="@+id/eventLocationInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="182dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
+
+        <TextView
+            android:id="@+id/eventPostCode"
+            android:layout_width="273dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/eventPostCode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventLocationInput" />
+
+        <TextView
+            android:id="@+id/eventStartTime"
+            android:layout_width="288dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="50dp"
+            android:inputType="time"
+            android:text="@string/eventStartTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateInput" />
+
+        <EditText
+            android:id="@+id/startTimeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventStartTime" />
+
+        <TextView
+            android:id="@+id/eventEndTime"
+            android:layout_width="291dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:inputType="time"
+            android:text="@string/eventEndTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startTimeInput" />
+
+        <EditText
+            android:id="@+id/endTimeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventEndTime" />
+
+        <TextView
+            android:id="@+id/eventType"
+            android:layout_width="292dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/eventType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.109"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/endTimeInput" />
+
+        <EditText
+            android:id="@+id/eventTypeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventType" />
+
+        <TextView
+            android:id="@+id/eventDescription"
+            android:layout_width="274dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/eventDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.131"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventTypeInput" />
+
+        <EditText
+            android:id="@+id/descriptionInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDescription" />
+
+        <Button
+            android:id="@+id/eventSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/eventSubmit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.411"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionInput" />
+
+        <CalendarView
+            android:id="@+id/dateInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.327"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventDate" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="left"
-            app:constraint_referenced_ids="eventTitle,eventStartTime,eventTitleInput,eventLocation,eventDate,eventType,eventLocationInput,editTextTextPostalAddress8,eventEndTime,eventPostCode,endTimeInput"
+            app:constraint_referenced_ids="eventTitle,eventStartTime,eventTitleInput,eventLocation,eventDate,eventType,eventLocationInput,eventEndTime,eventPostCode,endTimeInput"
             tools:layout_editor_absoluteX="21dp" />
-
-        <CalendarView
-            android:id="@+id/dateInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="416dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/postCodeInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="312dp"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.103"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
