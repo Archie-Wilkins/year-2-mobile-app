@@ -184,7 +184,7 @@ public class event_details_attendeesinfo extends Fragment {
             case R.id.submitNewAttendeeButton:
                 String name = attendeeNameInput.getText().toString();
                 if (name.equals("")) {
-                    Toast.makeText(getActivity().getApplication().getBaseContext(), "Name cannot be null", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplication().getBaseContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
                     int eventId = getActivity().getIntent().getExtras().getInt("eventId");
                     //Emptying event input

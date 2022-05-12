@@ -119,12 +119,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateInput" />
 
+<!--        Not using time type so that users can enter values like 4 o'clock or noon-->
         <EditText
             android:id="@+id/startTimeInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.089"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,6 @@
             android:layout_width="291dp"
             android:layout_height="43dp"
             android:layout_marginTop="20dp"
-            android:inputType="time"
             android:text="@string/eventEndTime"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.133"

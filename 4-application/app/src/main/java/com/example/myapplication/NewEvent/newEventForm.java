@@ -23,7 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class newEventForm extends AppCompatActivity {
@@ -76,6 +81,8 @@ public class newEventForm extends AppCompatActivity {
         //Calendar milleseconds since epoch to date
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         // Create a calendar object that will convert the date and time value in milliseconds to date.
+
+//      Getting event date
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(eventDateInput.getDate());
         String eventDate = formatter.format(calendar.getTime());
@@ -90,8 +97,36 @@ public class newEventForm extends AppCompatActivity {
         String eventType = eventTypeInput.getText().toString();
         String eventDescription = eventDescriptionInput.getText().toString();
 
-        //Validation here
-//        1. Title can't be null
+        //Validation
+//       Title can't be empty
+        if(eventTitle.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Event Title can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+//        Event location name cant be empty
+        if(eventLocationName.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Location can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        start time cant be empty
+        if(startTime.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Start time can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+//        event type cant be empty
+        if(eventType.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Event type can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+//        description cant be empty
+        if(eventDescription.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Event descsription  can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+
 
 
 

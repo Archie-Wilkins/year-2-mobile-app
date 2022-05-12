@@ -129,6 +129,8 @@
     <string name="eventEndTime">End Time (Optional)</string>
     <string name="eventSubmit">Create Event</string>
 
+
+
     <!-- View Event Details  -->
     <string name="tab1">Event</string>
     <string name="tab2">Attendees</string>
