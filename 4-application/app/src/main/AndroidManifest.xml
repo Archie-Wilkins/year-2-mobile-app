@@ -15,6 +15,7 @@
             android:exported="true">
             android:name=".ExternalEventView.external_event_view"
             android:exported="true"
+            android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"></action>
                 <category android:name="android.intent.category.DEFAULT"></category>
@@ -30,19 +31,22 @@
         <activity
             android:name=".ViewEventInfomation.event_details"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing" />
+            android:screenOrientation="portrait"
+             />
         <activity
             android:name=".Dashboard.dashboard"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".NewEvent.newEventForm"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing" />
+            android:screenOrientation="portrait"
+             />
         <activity
             android:name=".Login.login"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
