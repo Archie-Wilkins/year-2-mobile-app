@@ -49,7 +49,6 @@ public class externalAttendeesAwaitingResponse extends Fragment {
             @Override
             public void run() {
                 attendees = db.attendeeDAO().getAllAttendeeInfoByResponseAndEvent(eventId, "Yet to respond");
-
             };
         });
 

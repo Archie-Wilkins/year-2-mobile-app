@@ -1,6 +1,8 @@
 package com.example.myapplication.ExternalEventView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.myapplication.Dashboard.dashboard;
 import com.example.myapplication.R;
 import com.example.myapplication.Room.Attendee;
+import com.example.myapplication.SharedPreferences.UserDetails;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalAttendeesListAdaptor.ViewHolder>  {
@@ -47,7 +59,8 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
             public void onClick(View v){
                 String attendeeName = externalAttendees.get(position).getAttendeeName();
                 int attendeeId = externalAttendees.get(position).getAttendeeId();
-                String response = "Yes";
+                String attendeeResponse = "Yes";
+                updateUserResponseRequest( attendeeId, attendeeResponse);
             }
         });
 
@@ -55,7 +68,8 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
             public void onClick(View v){
                 String attendeeName = externalAttendees.get(position).getAttendeeName();
                 int attendeeId = externalAttendees.get(position).getAttendeeId();
-                String response = "No";
+                String attendeeResponse = "No";
+                updateUserResponseRequest( attendeeId, attendeeResponse);
             }
         });
 
@@ -63,7 +77,8 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
             public void onClick(View v){
                 String attendeeName = externalAttendees.get(position).getAttendeeName();
                 int attendeeId = externalAttendees.get(position).getAttendeeId();
-                String response = "Maybe";
+                String attendeeResponse = "Maybe";
+                updateUserResponseRequest( attendeeId, attendeeResponse);
             }
         });
     }
@@ -72,6 +87,44 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
     public int getItemCount() {
         return externalAttendees.size();
     }
+
+    public void updateUserResponseRequest(int attendeeId, String attendeeResponse){
+
+        HashMap<String, String> JsonMap = new HashMap<>();
+        JsonMap.put("response",attendeeResponse);
+        JSONObject jsonObject = new JSONObject(JsonMap);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        JsonObjectRequest patchUserStatusRequest = new JsonObjectRequest(
+                Request.Method.PATCH,
+                "https://archiewilkins.pythonanywhere.com/api/userStatus/" + attendeeId, jsonObject,
+                response -> {
+                    System.out.println(response.toString());
+                    try {
+                        String responseStatus = response.getString("response");
+                        if(responseStatus.equals("success")){
+                            //need to store username and password
+//
+                            //update database
+                            Toast.makeText(context, "User Updated", Toast.LENGTH_LONG).show();
+
+                        }else{
+                            Toast.makeText(context, "Oh no something went wrong, try again", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, "Server Error", Toast.LENGTH_LONG).show();
+                    }
+
+                },
+                error -> {
+                    System.out.println("Error");
+                    Toast.makeText(context, "Error Server Not Found", Toast.LENGTH_LONG).show();
+                }
+        );
+        requestQueue.add(patchUserStatusRequest);
+    }
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
