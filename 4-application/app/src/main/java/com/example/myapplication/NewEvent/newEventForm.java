@@ -109,11 +109,26 @@ public class newEventForm extends AppCompatActivity {
             return;
         }
 
+        //Event location name cant be empty
+        if(postCode.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "Post code can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
 //        start time cant be empty
         if(startTime.equals("")){
             Toast.makeText(getApplication().getBaseContext(), "Start time can't be empty", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //end time cant be empty
+        if(endTime.equals("")){
+            Toast.makeText(getApplication().getBaseContext(), "End time can't be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
 //        event type cant be empty
         if(eventType.equals("")){
             Toast.makeText(getApplication().getBaseContext(), "Event type can't be empty", Toast.LENGTH_SHORT).show();
@@ -121,7 +136,7 @@ public class newEventForm extends AppCompatActivity {
         }
 //        description cant be empty
         if(eventDescription.equals("")){
-            Toast.makeText(getApplication().getBaseContext(), "Event descsription  can't be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication().getBaseContext(), "Event description  can't be empty", Toast.LENGTH_SHORT).show();
             return;
         }
 
