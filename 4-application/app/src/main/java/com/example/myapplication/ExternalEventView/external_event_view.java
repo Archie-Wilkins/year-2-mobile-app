@@ -202,7 +202,6 @@ public class external_event_view extends AppCompatActivity {
                     }
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );

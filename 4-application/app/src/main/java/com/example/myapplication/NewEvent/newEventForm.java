@@ -154,9 +154,7 @@ public class newEventForm extends AppCompatActivity {
                 Request.Method.POST,
                 "https://archiewilkins.pythonanywhere.com/api/newEvent", jsonObject,
                 response -> {
-                    System.out.println(response.toString());
                     try {
-                        System.out.println("1");
                         String responseStatus = response.getString("response");
                         if(responseStatus.equals("success")){
                             Toast.makeText(getApplication().getBaseContext(), "Event Added", Toast.LENGTH_SHORT).show();
@@ -177,7 +175,6 @@ public class newEventForm extends AppCompatActivity {
 
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );

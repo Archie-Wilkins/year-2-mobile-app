@@ -75,21 +75,7 @@ public class event_details_attendeesinfo extends Fragment {
                 response -> {
                     try {
 
-                        //JSONObject responseObject = response.getJSONObject(String.valueOf(1));
-                        String eventIdResponse = response.getString("eventID");
-                        String hostIdResponse = response.getString("hostID");
-                        String eventAddressResponse = response.getString("eventAddress");
-                        String eventTitleResponse = response.getString("eventTitle");
-                        String eventDescriptionResponse = response.getString("eventDescription");
-                        String eventTypeResponse = response.getString("eventType");
-                        String eventLocationNameResponse = response.getString("eventLocationName");
-                        String eventStartTimeResponse = response.getString("eventStartTime");
-                        String eventEndTimeResponse = response.getString("eventEndTime");
-                        String eventDateResponse = response.getString("eventDate");
                         JSONObject eventAttendeesResponse = response.getJSONObject("eventAttendees");
-                        System.out.println(eventDescriptionResponse);
-                        System.out.println(eventAttendeesResponse.toString());
-
                         ArrayList<Attendee> attendeesList = new ArrayList<>();
                         int numOfAttendees = eventAttendeesResponse.length();
                         for (int index = 0; index < numOfAttendees; index++) {
@@ -101,8 +87,6 @@ public class event_details_attendeesinfo extends Fragment {
                             Attendee attendee = new Attendee(Integer.valueOf(attendeeId), Integer.valueOf(attendeeEventId), attendeeName, attendeeResponse);
                             attendeesList.add(attendee);
                         }
-
-                        System.out.println(attendeesList);
 
                         Context context = getContext();
                         AppDatabase db = AppDatabase.getDatabase(context);
@@ -129,21 +113,16 @@ public class event_details_attendeesinfo extends Fragment {
 
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.attendeesfragmentContainerView, fragment).commit();
 
-
-
                     } catch (JSONException jsonException) {
                         jsonException.printStackTrace();
                     }
                 },
                 error -> {
-                    System.out.println("Error");
-//                        Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
         requestQueue.add(getEventRequest);
-
     }
-
 
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
@@ -231,7 +210,6 @@ public class event_details_attendeesinfo extends Fragment {
                     }
                 },
                 error -> {
-                    System.out.println("Error");
                         Toast.makeText(getActivity().getApplication().getBaseContext(), "Error Can't reach server", Toast.LENGTH_LONG).show();
                 }
         );
