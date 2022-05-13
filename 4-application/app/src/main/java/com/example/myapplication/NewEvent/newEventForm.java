@@ -73,14 +73,9 @@ public class newEventForm extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences(sharedPreferencesFile, Context.MODE_PRIVATE);
         int hostId = sp.getInt(UserDetails.KEY_USER_ID, UserDetails.DEFAULT_USER_ID);
 
-
-//Converted based off code from
-//https://stackoverflow.com/questions/41541694/shortcut-to-select-a-line-of-code-in-android-studio
-
         //Getting date from form
         //Calendar milleseconds since epoch to date
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        // Create a calendar object that will convert the date and time value in milliseconds to date.
 
 //      Getting event date
         Calendar calendar = Calendar.getInstance();
@@ -139,12 +134,6 @@ public class newEventForm extends AppCompatActivity {
             Toast.makeText(getApplication().getBaseContext(), "Event description  can't be empty", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
-
-
-
-
 
 
 //        Creating Json Object

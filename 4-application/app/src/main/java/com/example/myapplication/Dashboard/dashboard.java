@@ -119,8 +119,6 @@ public class dashboard extends AppCompatActivity {
                 Request.Method.GET,
                 "https://archiewilkins.pythonanywhere.com/api/usersEvents/" + userId, null,
                 response -> {
-                    System.out.println(response.toString());
-                    //need to get response size so I can list through and create event objects
                     int responseLength = response.length();
 
 
@@ -157,6 +155,7 @@ public class dashboard extends AppCompatActivity {
                         };
                     });
 
+                    //  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
                     awaitTerminationAfterShutdown(executor);
 
 
@@ -167,7 +166,6 @@ public class dashboard extends AppCompatActivity {
 
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
@@ -205,6 +203,7 @@ public class dashboard extends AppCompatActivity {
         }
     }
 
+//  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
         try {

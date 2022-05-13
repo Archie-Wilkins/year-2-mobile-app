@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ExternalEventView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.ExternalEventView.ExternalAttendeesListAdaptor;
+import com.example.myapplication.R;
 import com.example.myapplication.Room.AppDatabase;
 import com.example.myapplication.Room.Attendee;
 import com.example.myapplication.ViewEventInfomation.AttendeesListAdapter;
@@ -40,9 +41,9 @@ public class externalAttendeesAwaitingResponse extends Fragment {
         attendeesListView = view.findViewById(R.id.externalAttendeesAwaitingResponseList);
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
-//
+
         int eventId = getActivity().getIntent().getExtras().getInt("eventId");
-//
+
         ExecutorService executor = Executors.newFixedThreadPool(4);
         executor.execute(new Runnable() {
 
@@ -56,7 +57,6 @@ public class externalAttendeesAwaitingResponse extends Fragment {
 
         adapter = new ExternalAttendeesListAdaptor(inflater, attendees,context, attendeesListView);
 
-//     adapter here
      GridLayoutManager attendeeLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
      attendeesListView.setLayoutManager(attendeeLayoutManager);
      attendeesListView.setAdapter(adapter);
@@ -64,6 +64,7 @@ public class externalAttendeesAwaitingResponse extends Fragment {
         return view;
     }
 
+//  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
         try {

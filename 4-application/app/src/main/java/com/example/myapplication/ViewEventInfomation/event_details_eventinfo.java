@@ -40,8 +40,6 @@ public class event_details_eventinfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         eventId = getActivity().getIntent().getExtras().getInt("eventId");
         shareable = getActivity().getIntent().getExtras().getBoolean("shareable");
 
@@ -68,8 +66,7 @@ public class event_details_eventinfo extends Fragment {
             shareEventButton.setOnClickListener(this::onClick);
         }
 
-
-
+//        Settomg all views
         eventDetailsEventStartTime = view.findViewById(R.id.eventDetailsEventStartTime);
         eventDetailsEventDate = view.findViewById(R.id.eventDetailsEventDate);
         eventDetailsEventLocation = view.findViewById(R.id.eventDetailsEventLocation);
@@ -83,6 +80,7 @@ public class event_details_eventinfo extends Fragment {
         if (eventList.size() == 1){
             Event event = eventList.get(0);
 
+//            setting view content
             eventDetailsEventStartTime.setText(event.getStartTime());
             eventDetailsEventDate.setText(event.getDate());
             eventDetailsEventLocation.setText(event.getLocationName());
@@ -111,12 +109,12 @@ public class event_details_eventinfo extends Fragment {
         switch(id){
             case R.id.shareEventButton:
 
+//                Getting event details
                 String eventDetailsEventDateText = eventDetailsEventDate.getText().toString();
                 String eventDetailsEventStartTimeText = eventDetailsEventStartTime.getText().toString();
                 String eventDetailsEventLocationText = eventDetailsEventLocation.getText().toString();
                 String eventDetailsEventEndTimeText = eventDetailsEventEndTime.getText().toString();
                 String eventDetailsEventDescriptionText = eventDetailsEventDescription.getText().toString();
-                String eventDetailsEventTypeText = eventDetailsEventType.getText().toString();
                 String eventDetailsEventAddressText = eventDetailsEventAddress.getText().toString();
                 String eventDetailsEventTitleText = eventDetailsEventTitle.getText().toString();
 

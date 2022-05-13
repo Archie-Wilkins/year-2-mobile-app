@@ -14,7 +14,7 @@ import com.example.myapplication.R;
 
 import java.util.List;
 
-public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdapter.ViewHolder> implements View.OnClickListener {
+public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdapter.ViewHolder>{
 
     LayoutInflater inflater;
     List<String> response;
@@ -29,16 +29,10 @@ public class AttendeesListAdapter extends RecyclerView.Adapter<AttendeesListAdap
         this.context = context;
     }
 
-    @Override
-    public void onClick(View view) {
-        System.out.println("Nice");
-    }
-
     @NonNull
     @Override
     public AttendeesListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.attendee_item, parent, false);
-        view.setOnClickListener(this::onClick);
         return new ViewHolder(view);
     }
 

@@ -104,13 +104,9 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
                 Request.Method.PATCH,
                 "https://archiewilkins.pythonanywhere.com/api/userStatus/" + attendeeId, jsonObject,
                 response -> {
-                    System.out.println(response.toString());
                     try {
                         String responseStatus = response.getString("response");
                         if(responseStatus.equals("success")){
-                            //need to update database values
-                            //need to update relevant fragment
-                            //
 
                             AppDatabase db = AppDatabase.getDatabase(context);
 
@@ -127,19 +123,15 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
 
 
                                     db.attendeeDAO().update(attendeeUpdated);
-                                    externalAttendees.remove(attendee); //Actually change your list of items here
+                                    externalAttendees.remove(attendee);
                                 }
                             });
 
+                            //  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
                             awaitTerminationAfterShutdown(executor);
                             ExternalAttendeesListAdaptor.notifyDataSetChanged();
 
-
-//
-                            //update database
                             Toast.makeText(context, attendee.getAttendeeName() + " updated", Toast.LENGTH_LONG).show();
-
-
 
                             int eventId = attendee.getEventId();
                             boolean shareable = false;
@@ -151,10 +143,6 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
 
                             view.getContext().startActivity(intent);
 
-//                            overridePendingTransition(0, 0);
-//                            startActivity(getIntent());
-//                            overridePendingTransition(0, 0);
-
                         }else{
                             Toast.makeText(context, "Oh no something went wrong, try again", Toast.LENGTH_LONG).show();
                         }
@@ -162,10 +150,8 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
                         e.printStackTrace();
                         Toast.makeText(context, "Server Error", Toast.LENGTH_LONG).show();
                     }
-
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(context, "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
@@ -174,7 +160,7 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
 
 
 
-
+//  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
         try {
@@ -186,8 +172,6 @@ public class ExternalAttendeesListAdaptor extends RecyclerView.Adapter<ExternalA
             Thread.currentThread().interrupt();
         }
     }
-
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView externalAttendeeName;

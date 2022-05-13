@@ -19,7 +19,6 @@ import com.example.myapplication.Room.Attendee;
 import com.example.myapplication.Room.Event;
 import com.example.myapplication.Universal.loadingFragment;
 import com.example.myapplication.ViewEventInfomation.event_details_eventinfo;
-import com.example.myapplication.externalAttendeesAwaitingResponse;
 
 import org.json.JSONException;
 
@@ -42,7 +41,6 @@ public class external_event_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_external_event_view);
 
-
         Uri uri = getIntent().getData();
         if(uri != null) {
             String path = uri.toString();
@@ -50,35 +48,24 @@ public class external_event_view extends AppCompatActivity {
         }else {
             try {
                  eventId = getIntent().getExtras().getInt("eventId");
-                System.out.println("Pause");
             }catch (Exception e){
 
             }
             }
-//          Toast.makeText(external_event_view.this, "Path = " + path, Toast.LENGTH_SHORT).show();
-        System.out.println("Event id " + eventId);
 
-        //Refactor if time
+        //Not optimal rebuilding database if not needed
         this.db = Room.databaseBuilder(
                 getApplicationContext(),
                 AppDatabase.class,
                 "eventsDatabase"
         ).build();
 
-
-            getEvent();
+//      Fetches event data and attendee data
+        getEvent();
         getEventAttendees();
-//            Intent currentIntent = this.getIntent();
-//            currentIntent.putExtra("eventId", eventId);
-//            currentIntent.putExtra("shareable", false);
-//
-//
-//            Fragment fragment = new event_details_eventinfo();
-//            getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainer, fragment).commit();
 
 
-
-
+//Sets all fragments to be spinners while loading
         Fragment eventInfoFragment = new loadingFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, eventInfoFragment).commit();
 
@@ -87,34 +74,23 @@ public class external_event_view extends AppCompatActivity {
 
         Fragment noListFragment = new loadingFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNo, noListFragment).commit();
-//
+
         Fragment maybeListFragment = new loadingFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedMaybe, maybeListFragment).commit();
 
         Fragment noResponseListFragment = new loadingFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNoResponse, noResponseListFragment).commit();
 
-
-            //
-
-//        }else{
-//            //display an error
-//        }
-
-
     }
 
     private void getEvent() {
         this.executor = Executors.newFixedThreadPool(4);
 
-        System.out.println(eventId);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest getEventsRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 "https://archiewilkins.pythonanywhere.com/api/events/" + eventId, null,
                 response -> {
-                    System.out.println(response.toString());
-                    System.out.println("Step 1");
 
                         try {
                             String eventIdFromResponse = response.getString("eventID");
@@ -127,7 +103,7 @@ public class external_event_view extends AppCompatActivity {
                             String eventStartTime = response.getString("eventStartTime");
                             String eventEndTime = response.getString("eventEndTime");
                             String eventDate = response.getString("eventDate");
-//                        //eventAttendees is left null
+                          //eventAttendees is left null
 
                             Event event = new Event(Integer.valueOf(eventIdFromResponse), Integer.valueOf(hostId), eventTitle, eventDescription, eventType, eventAddress, eventLocationName, eventStartTime, eventEndTime, eventDate);
 
@@ -141,18 +117,11 @@ public class external_event_view extends AppCompatActivity {
 
                             awaitTerminationAfterShutdown(executor);
 
-
-//                            Fragment fragment = new eventGridFragment();
-//
-//                            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
-
                             Intent currentIntent = this.getIntent();
                             currentIntent.putExtra("eventId", eventId);
                             currentIntent.putExtra("shareable", false);
 
-
                             Fragment fragment = new event_details_eventinfo();
-
 
                             getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesEventInfo, fragment).commit();
 
@@ -164,7 +133,6 @@ public class external_event_view extends AppCompatActivity {
 
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
@@ -179,10 +147,6 @@ public class external_event_view extends AppCompatActivity {
                 Request.Method.GET,
                 "https://archiewilkins.pythonanywhere.com/api/attendeesByEvent/" + eventId, null,
                 response -> {
-                    System.out.println(response.toString());
-                    //need to get response size so I can list through and create event objects
-                    System.out.println(response);
-                    System.out.println(response.toString());
 
                     try{
                     ArrayList<Attendee> attendeesList = new ArrayList<>();
@@ -196,7 +160,6 @@ public class external_event_view extends AppCompatActivity {
                         attendeesList.add(attendee);
                     }
 
-                    System.out.println(attendeesList);
                         executor2.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -207,11 +170,6 @@ public class external_event_view extends AppCompatActivity {
                         });
 
                     awaitTerminationAfterShutdown(executor2);
-
-
-//                    Intent currentIntent2 = this.getIntent();
-//                    currentIntent2.putExtra("eventId", eventId);
-//
 
 //                Yes List
                   Fragment yesListFragment = new externalAttendeesList();
@@ -239,14 +197,9 @@ public class external_event_view extends AppCompatActivity {
                Fragment noResponseFragment = new externalAttendeesAwaitingResponse();
                getSupportFragmentManager().beginTransaction().replace(R.id.externalViewFragmentContainerAttendeesRespondedNoResponse, noResponseFragment).commit();
 
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
-
                 },
                 error -> {
                     System.out.println("Error");
@@ -255,10 +208,6 @@ public class external_event_view extends AppCompatActivity {
         );
         requestQueue.add(getAttendeesRequest);
     }
-
-
-
-
 
 
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {

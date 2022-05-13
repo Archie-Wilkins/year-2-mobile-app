@@ -32,9 +32,6 @@ public class login extends AppCompatActivity {
     private EditText usernameInput;
     private EditText passwordInput;
 
-//    private SharedPreferences sharedPreferences;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +54,6 @@ public class login extends AppCompatActivity {
 
         this.usernameInput = findViewById(R.id.usernameInput);
         this.passwordInput = findViewById(R.id.passwordInput);
-
-//        this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
     }
 
     public void onClick(View view) {
@@ -79,11 +74,9 @@ public class login extends AppCompatActivity {
                 Request.Method.POST,
                 "https://archiewilkins.pythonanywhere.com/api/userValid", jsonObject,
                 response -> {
-                    System.out.println(response.toString());
                     try {
                         String responseStatus = response.getString("responseStatus");
                         if(responseStatus.equals("success")){
-                            //need to store username and password
                             String responseUsername = response.getString("username");
                             String responsePassword = response.getString("password");
                             String responseName = response.getString("usersRealName");
@@ -116,18 +109,11 @@ public class login extends AppCompatActivity {
 
                 },
                 error -> {
-                    System.out.println("Error");
                     Toast.makeText(getApplication().getBaseContext(), "Error Server Not Found", Toast.LENGTH_LONG).show();
                 }
         );
         requestQueue.add(getRequest);
     }
-
-
-
-//    public void loginInRequestHandler(JSONArray response) {
-//        response.
-//    }
 
 }
 

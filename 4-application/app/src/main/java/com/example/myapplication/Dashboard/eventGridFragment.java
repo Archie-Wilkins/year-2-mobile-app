@@ -87,6 +87,7 @@ public class eventGridFragment extends Fragment {
             };
         });
 
+        //  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
         awaitTerminationAfterShutdown(executor);
 
 
@@ -101,6 +102,7 @@ public class eventGridFragment extends Fragment {
 
 
 //    https://www.baeldung.com/java-executor-wait-for-threads
+    //  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
         try {

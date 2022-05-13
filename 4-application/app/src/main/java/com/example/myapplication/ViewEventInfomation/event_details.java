@@ -20,10 +20,6 @@ public class event_details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
 
-        int value = getIntent().getExtras().getInt("eventId");
-
-
-
         tabLayout = findViewById(R.id.eventDetailsTabLayout);
         viewPager = findViewById(R.id.eventDetailsViewPager);
 

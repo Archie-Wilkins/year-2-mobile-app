@@ -25,6 +25,7 @@ public class EventInfoAdapter extends FragmentStateAdapter {
     }
 
     @Override
+//  2 is the current number of tabs in the view
     public int getItemCount() {
         return 2;
     }

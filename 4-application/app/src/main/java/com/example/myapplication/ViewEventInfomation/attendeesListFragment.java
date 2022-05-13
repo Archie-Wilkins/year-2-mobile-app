@@ -34,16 +34,10 @@ public class attendeesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_attendees_list, container, false);
 
-//        String eventId = getActivity().getIntent().getExtras().getString("eventId");
        Bundle bundle = this.getArguments();
         String eventId = bundle.getString("eventId");
-
-        //get responses and attendees
-
-
 
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
@@ -69,12 +63,10 @@ public class attendeesListFragment extends Fragment {
 
         awaitTerminationAfterShutdown(executor);
 
-
         GridLayoutManager attendeeLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
         attendeesListView.setLayoutManager(attendeeLayoutManager);
         attendeesListView.setAdapter(adapter);
-                        //if attendees present display in list view and let users add new attendees
-                        //let users add new attendees
+
         adapter.notifyDataSetChanged();
 
 

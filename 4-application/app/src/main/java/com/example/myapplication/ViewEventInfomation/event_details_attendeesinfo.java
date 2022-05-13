@@ -52,8 +52,6 @@ public class event_details_attendeesinfo extends Fragment {
 
         attendeeNameInput = view.findViewById(R.id.editTextTextPersonName);
 
-
-        System.out.println("Creating attendees object");
         int eventId = getActivity().getIntent().getExtras().getInt("eventId");
 
         //Run loading screen until attendees load
@@ -62,16 +60,8 @@ public class event_details_attendeesinfo extends Fragment {
         fragmentTransaction.add(R.id.attendeesfragmentContainerView, new loadingFragment());
         fragmentTransaction.commit();
 
-
-        //Running loading view
-//        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.add(R.id.fragmentContainerView, new loadingFragment());
-//        fragmentTransaction.commit();
-
         getAttendeesList(eventId);
 
-        //Bug here that view is being returned before the call is made
         return view;
     }
 
@@ -83,10 +73,6 @@ public class event_details_attendeesinfo extends Fragment {
                 Request.Method.GET,
                 "https://archiewilkins.pythonanywhere.com/api/eventsWithAttendees/" + eventId, null,
                 response -> {
-                    System.out.println(response.toString());
-                    //need to get response size so I can list through and create event objects
-
-
                     try {
 
                         //JSONObject responseObject = response.getJSONObject(String.valueOf(1));
@@ -117,10 +103,6 @@ public class event_details_attendeesinfo extends Fragment {
                         }
 
                         System.out.println(attendeesList);
-
-                        //Need to set up list view adapter
-                        //
-
 
                         Context context = getContext();
                         AppDatabase db = AppDatabase.getDatabase(context);
@@ -178,8 +160,6 @@ public class event_details_attendeesinfo extends Fragment {
     public void onClick(View view) {
         int id = view.getId();
 
-        System.out.println("On click");
-        Intent intent = null;
         switch (id) {
             case R.id.submitNewAttendeeButton:
                 String name = attendeeNameInput.getText().toString();
@@ -205,25 +185,15 @@ public class event_details_attendeesinfo extends Fragment {
 
         //AttendeeId set to 0, room will automatically set proper attendeeId - effectively just a null value
 
-
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         JsonObjectRequest addAttendeeRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 "https://archiewilkins.pythonanywhere.com/api/addEventAttendees" , jsonObject,
                 response -> {
-                    System.out.println(response.toString());
-                    //need to get response size so I can list through and create event objects
                     String responseStatus = null;
                     try {
                         responseStatus = response.getString("response");
                         if(responseStatus.equals("success")) {
-
-
-
-                            //TO DO
-                            //add event attendee to list via adapter and notify data set changed
-
-                            //
 
                             Attendee attendee = new Attendee(0, eventId, attendeeName, "Yet to respond");
 
@@ -245,7 +215,7 @@ public class event_details_attendeesinfo extends Fragment {
                         Toast.makeText(getActivity().getApplication().getBaseContext(), "Attendee Added", Toast.LENGTH_SHORT).show();
 
                         awaitTerminationAfterShutdown(executor);
-                        //Rebuild fragment
+                        //Rebuilds fragment (Sub optimal in terms of code performance)
                         Bundle bundle = new Bundle();
                         bundle.putString("eventId", String.valueOf(eventId));
                         Fragment fragment = new attendeesListFragment();
@@ -256,7 +226,6 @@ public class event_details_attendeesinfo extends Fragment {
 
                     } catch (JSONException jsonException) {
                         jsonException.printStackTrace();
-                        //give error toast
                         Toast.makeText(getActivity().getApplication().getBaseContext(), "Whoops something went wrong", Toast.LENGTH_SHORT).show();
 
                     }
@@ -267,6 +236,5 @@ public class event_details_attendeesinfo extends Fragment {
                 }
         );
         requestQueue.add(addAttendeeRequest);
-
     }
 }

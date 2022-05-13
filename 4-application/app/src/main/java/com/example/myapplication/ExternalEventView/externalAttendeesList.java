@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 public class externalAttendeesList extends Fragment {
 
     AttendeesListAdapter adapter;
-    RecyclerView attendeesListView;
     List<Attendee> attendeeInfo = new ArrayList<>();
     List<String> responseList = new ArrayList<>();
     List<String> attendeeNameList = new ArrayList<>();
@@ -38,12 +37,10 @@ public class externalAttendeesList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_external_attendees_list, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.externalAttendeesListRecyclerView);
         adapter = new AttendeesListAdapter(inflater, responseList, attendeeNameList, getActivity().getApplicationContext());
-
 
         Context context = getContext();
         AppDatabase db = AppDatabase.getDatabase(context);
@@ -56,7 +53,6 @@ public class externalAttendeesList extends Fragment {
         ExecutorService executor = Executors.newFixedThreadPool(4);
         executor.execute(new Runnable() {
 
-
             @Override
             public void run() {
                 attendeeInfo = db.attendeeDAO().getAllAttendeeInfoByResponseAndEvent(eventId, responseMessage);
@@ -68,11 +64,10 @@ public class externalAttendeesList extends Fragment {
                 }
             };
         });
-//
+
+//  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
         awaitTerminationAfterShutdown(executor);
-//
-//
-//
+
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -82,6 +77,7 @@ public class externalAttendeesList extends Fragment {
         return view;
     }
 
+    //  Ensures room query finishes executing before proceeding otherwise it operates asynchronously
     public  void awaitTerminationAfterShutdown(ExecutorService threadPool) {
         threadPool.shutdown();
         try {
